@@ -1,0 +1,26 @@
+{
+  "name": "questioner-react",
+  "version": "1.0.0",
+  "description": "Questioner is an app that crowd-sources questions for meetups. It allows meetup organizers to prioritize the questions to be answered. Users of this platform can upvote or downvote a question. The questions however, are ranked according to their votes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BukkyOmo/Questioner-react.git"
+  },
+  "keywords": [
+    "Questioner",
+    "react",
+    "redux",
+    "testing",
+    "axios"
+  ],
+  "author": "Bukola Omosefunmi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BukkyOmo/Questioner-react/issues"
+  },
+  "homepage": "https://github.com/BukkyOmo/Questioner-react#readme"
+}
