@@ -60,4 +60,8 @@ typings/
 # next.js build output
 .next
 
+#build output
 build/
+
+#to remove unneccessary ds_store files appearing in all folder
+.DS_STORE
