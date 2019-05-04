@@ -1,20 +1,46 @@
 {
-    "parser": "babel-eslint",
-    "plugins": [
-        "react"
-      ],
-    "rules": {
-        "no-unused-vars": 0,
-        "max-len": [1, 70, 2, {"ignoreComments": true}],
-        "react/prop-types": [2],
-        "comma-dangle": ["error", "never"]
-    },
-    "extends": ["airbnb-base"],
-    "env": {
-        "browser": true,
-        "node": true
-      },
-        "globals": {
-          "document": false
-        }
+  "plugins": [
+      "react"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+          "jsx": true
+      }
+  },
+  "env": {
+      "es6":     true,
+      "browser": true,
+      "node":    true,
+      "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb"
+],
+  "rules": {
+    "semi": [2, "always"],
+    "indent": ["error", 2],
+    "object-curly-spacing": ["error", "always"],
+    "no-extra-parens": "error",
+    "max-len": ["error", { "code": 100 }],
+    "no-multi-spaces": "error",
+    "no-console": 0,
+    "react/prop-types": [2],
+    "comma-dangle": ["error", "never"],
+    "react/prefer-stateless-function": [0],
+    "no-useless-constructor": 1
+  },
+  "settings": {
+    "react": {
+      "version": "16.3"
+    }
+  },
+  "import/no-extraneous-dependencies": "[error, { devDependencies: true }]",
+  "globals": {
+    "document": false
+  }
 }
