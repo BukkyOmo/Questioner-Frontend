@@ -6,7 +6,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node app.js",
     "start:dev": "webpack-dev-server --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "clean-webpack-plugin": "^2.0.1",
     "cross-env": "5.2.0",
     "css-loader": "2.1.1",
+    "coveralls": "3.0.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-loader": "^2.1.2",

@@ -39,5 +39,8 @@
       "version": "16.3"
     }
   },
-  "import/no-extraneous-dependencies": "[error, { devDependencies: true }]"
+  "import/no-extraneous-dependencies": "[error, { devDependencies: true }]",
+  "globals": {
+    "document": false
+  }
 }
