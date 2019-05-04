@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/BukkyOmo/Questioner-react#readme",
   "dependencies": {
+    "editorconfig": "^0.15.3",
     "express": "4.16.4",
     "react": "16.8.6",
     "react-dom": "16.8.6"
