@@ -1,0 +1,45 @@
+body{
+//header
+ul
+{
+    display: flex;
+    flex-flow: row wrap;
+    background-color: rgba(0,0,0,0.80);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style-type: none;
+}
+
+li a
+{
+    display: block;
+    color: $white;
+    text-align: $center;
+    padding: 15px;
+    margin: 5px 15px;
+    text-decoration: none;
+}
+
+
+li:nth-child(1)
+{
+    margin-right: auto;
+    font-size: 35px;
+    font-weight: 400;
+    font-family: $font-stack;
+}
+
+//footer
+.foot
+{
+    background-color: rgba(0,0,0,0.95);
+    color: $white;
+    min-height: 60px;
+    width: 100%;
+    text-align: $center;
+    position: relative;
+    bottom:0;
+    left:0;
+}
+}
