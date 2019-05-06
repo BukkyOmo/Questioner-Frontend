@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One');
+
+html, body{
+  body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background-color: $background;
+    line-height: 2em;
+    font-family: $body-font;
+}
+*
+{
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+
+.banner
+{
+    background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(https://res.cloudinary.com/forsetti/image/upload/v1557102496/Questioner-react/event7.jpg);
+    background-size: cover;
+    background-position: right 25px top;
+    opacity: 0.9;
+    height: 75vh;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: $center;
+    align-items: $center;
+}
+
+.banner2
+{
+    background: #007bff;
+    height: 100px;
+    line-height: 1em;
+    font-weight: 100;
+    color: $white;
+    display: flex;
+    flex-direction: row;
+    justify-content: $center;
+    align-items: $center;
+    margin-bottom: 100px;
+    font-size: 1.2em;
+
+}
+
+.flex1
+{
+    text-align: $center;
+    line-height: 1.2em;
+}
+
+h1.flex1
+{
+    font-size: 3.7em;
+    font-weight: bolder;
+}
+
+h2.flex1
+{
+    font-size: 1.7em;
+    font-weight: 400;
+}
+
+.flex2
+{
+    height: 40px;
+    background-color: $orange;
+    margin-bottom: 5px;
+    width: 197px;
+    margin-left: 47px;
+    border: 1px solid $orange;
+    font-size:16px;
+}
+
+.flex2 a
+{
+    text-decoration: none;
+    color: $white;
+}
+
+.svg{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  margin-bottom: 3em;
+}
+
+.svg-item{
+  margin: auto;
+}
+
+.justify-center{
+  width: 100%;
+  display: flex;
+  justify-content: $center;
+}
+
+.center {
+  text-align: $center;
+  margin: 3em 0 3em 0;
+}
+
+.svg-item img{
+  width: 80px;
+  height: 100px;
+  margin: auto;
+}
+}

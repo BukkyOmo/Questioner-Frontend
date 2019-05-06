@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './UserProfile';
+import Header from './common/Header';
+import Footer from './common/Footer';
+import LandingPage from './components/LandingPage';
+import './styles/styles.scss';
 
 ReactDOM.render(
-  <div><App /></div>,
+  <div>
+    <Header />
+    <LandingPage />
+    <Footer />
+  </div>,
   document.getElementById('root')
 );
