@@ -64,4 +64,4 @@ typings/
 build/
 
 #to remove unneccessary ds_store files appearing in all folder
-.DS_STORE
+.DS_Store
