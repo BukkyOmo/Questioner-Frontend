@@ -42,7 +42,7 @@ module.exports = {
       ]
       },
   resolve: {
-    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+     modules: [path.resolve(__dirname, 'public/src'), 'node_modules', path.resolve('node_modules')],
     extensions: ['*', '.js', '.jsx']
   },
   plugins: [

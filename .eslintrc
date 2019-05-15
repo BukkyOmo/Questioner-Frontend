@@ -1,45 +1,53 @@
 {
-  "plugins": [
-      "react"
-  ],
-  "parser": "babel-eslint",
-  "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module",
-      "ecmaFeatures": {
-          "jsx": true
-      }
-  },
-  "env": {
-      "es6":     true,
-      "browser": true,
-      "node":    true,
-      "jest": true
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "airbnb-base"
-],
-  "rules": {
-    "semi": [2, "always"],
-    "indent": ["error", 2],
-    "object-curly-spacing": ["error", "always"],
-    "no-extra-parens": "error",
-    "max-len": ["error", { "code": 100 }],
-    "no-multi-spaces": "error",
-    "no-console": 0,
-    "react/prop-types": [2],
-    "comma-dangle": ["error", "never"],
-    "react/prefer-stateless-function": [0],
-    "no-useless-constructor": 1
-  },
-  "settings": {
-    "react": {
-      "version": "16.3"
+    "extends": "airbnb",
+    "env": {
+        "node": true,
+        "es6": true,
+        "browser": true,
+        "jest": true
+    },
+    "plugins": ["react"],
+    "parser": "babel-eslint",
+    "rules": {
+        "max-len": [1, 120, 2, { "ignoreComments": true }],
+        "react/prop-types": 0,
+        "jsx-quotes": ["error", "prefer-single"],
+        "no-unused-vars": 0,
+        "comma-dangle": 0,
+        "jsx-a11y/anchor-is-valid": [ "error", {
+        "components": [ "Link" ],
+        "specialLink": [ "to" ],
+        "aspects": [ "noHref", "invalidHref", "preferButton" ]
+        }],
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [".js", ".jsx"]
+            }
+        ],
+        "react/prefer-stateless-function": [0],
+        "no-useless-constructor": 1,
+        "curly": [
+            "error",
+            "multi-line"
+        ]
+    },
+    "parserOptions": {
+        "ecmaVersion": 2017,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "settings": {
+        "react": {
+          "version": "detect"
+        }
+    },
+    "globals": {
+        "localStorage": true,
+        "document": true,
+        "require": true,
+        "window": true
     }
-  },
-  "globals": {
-    "document": false
-  }
 }
