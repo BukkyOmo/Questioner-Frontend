@@ -5,11 +5,11 @@ const Header = () => (
   <nav>
 
     <ul>
-      <li id="logo"><NavLink to='/'>Questioner</NavLink></li>
+      <li id='logo'><NavLink to='/'>Questioner</NavLink></li>
 
-      <li><a href="signup.html">Sign Up</a></li>
+      <li><a href='/signup'>Sign Up</a></li>
 
-      <li><a href="login.html">Sign In</a></li>
+      <li><a href='/login'>Sign In</a></li>
 
     </ul>
 
