@@ -42,4 +42,15 @@ li:nth-child(1)
     bottom:0;
     left:0;
 }
+
+footer {
+  background-color: rgba(0, 0, 0, 0.95);
+  color: #fff;
+  // min-height: 60px;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
 }

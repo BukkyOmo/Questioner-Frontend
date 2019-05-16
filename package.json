@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/BukkyOmo/Questioner-react#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "cors": "^2.8.5",
     "editorconfig": "^0.15.3",
     "express": "4.16.4",

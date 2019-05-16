@@ -11,7 +11,16 @@ const LandingPage = () => (
     </div>
     <div className='banner2'>
       <h2>Planning a meetup  and would love to get Questions upfront?</h2>
-      <button className='flex2' type='button'><a href='signup.html'>Get Started &gt;&gt; </a></button>
+      <button
+        className='flex2'
+        type='button'
+      >
+        <a
+          href='/signup'
+        >
+          Get Started &gt;&gt;
+        </a>
+      </button>
     </div>
     <div className='center'>
       <h1>How it works</h1>
