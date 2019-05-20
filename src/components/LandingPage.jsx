@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import conversation from '../assets/images/conversation.svg';
 import checklist from '../assets/images/checklist.svg';
 import click from '../assets/images/click.svg';
@@ -15,11 +16,11 @@ const LandingPage = () => (
         className='flex2'
         type='button'
       >
-        <a
-          href='/signup'
+        <Link
+          to='/signup'
         >
           Get Started &gt;&gt;
-        </a>
+        </Link>
       </button>
     </div>
     <div className='center'>

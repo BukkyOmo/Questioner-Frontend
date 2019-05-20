@@ -1,50 +1,46 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class FormComponent extends Component {
+const endPoint = 'https://bukkyomo-questioner.herokuapp.com/api/v1/auth/signup';
+
+class SignUpForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
       username: '',
-      password: '',
-      cpassword: ''
+      password: ''
     };
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     const {
-      email, username, password, cpassword
+      email, username, password
     } = this.state;
-    const data = {
+
+    const user = {
       email,
       username,
-      password,
-      cpassword
+      password
     };
-    axios.post('https://bukkyomo-questioner.herokuapp.com/api/v1/auth/signup', { data })
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-      });
-    console.log(this.state);
-  }
+
+    const data = await axios.post(endPoint, user);
+    this.setState(data);
+  };
 
   handleChange = (e) => {
-    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
-    console.log(e.target.value);
-  }
+  };
 
   render() {
     const {
-      email, username, password, cpassword
+      email, username, password
     } = this.state;
     return (
       <React.Fragment>
         <main>
-          <form method='POST' className='flex' onSubmit={this.handleSubmit}>
+          <form className='flex' onSubmit={this.handleSubmit}>
             <div className='items'>
               <h1>Sign Up</h1>
             </div>
@@ -82,17 +78,6 @@ class FormComponent extends Component {
               />
             </div>
 
-            <div>
-              <input
-                type='password'
-                id='cpassword'
-                placeholder='Confirm Password'
-                name='cpassword'
-                onChange={this.handleChange}
-                value={cpassword}
-              />
-            </div>
-
             <div className='items'>
               <button
                 className='button'
@@ -118,4 +103,4 @@ class FormComponent extends Component {
   }
 }
 
-export default FormComponent;
+export default SignUpForm;
