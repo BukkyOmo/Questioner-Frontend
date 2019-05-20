@@ -7,7 +7,13 @@
     "start": "cross-env NODE_ENV=production node app.js",
     "start:dev": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
+    "test": "jest"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "repository": {
     "type": "git",
@@ -28,13 +34,16 @@
   "homepage": "https://github.com/BukkyOmo/Questioner-react#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-jest": "^24.8.0",
     "cors": "^2.8.5",
     "editorconfig": "^0.15.3",
     "express": "4.16.4",
+    "jest-css-modules-transform": "^2.2.0",
     "prop-types": "^15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-router-dom": "^5.0.0"
+    "react-router-dom": "^5.0.0",
+    "save": "^2.4.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.4",
@@ -44,10 +53,14 @@
     "@babel/preset-react": "7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "8.0.5",
+    "babel-plugin-module-resolver": "^3.2.0",
     "clean-webpack-plugin": "^2.0.1",
     "coveralls": "3.0.3",
     "cross-env": "5.2.0",
     "css-loader": "2.1.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.1",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-loader": "^2.1.2",
@@ -57,6 +70,7 @@
     "eslint-watch": "^5.1.2",
     "file-loader": "3.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.8.0",
     "node-sass": "4.12.0",
     "react-hot-loader": "4.8.4",
     "sass-loader": "7.1.0",
