@@ -39,14 +39,6 @@
             "jsx": true
         }
     },
-    "import/no-extraneous-dependencies": [
-    "error", {
-       "devDependencies": false,
-       "optionalDependencies": false,
-       "peerDependencies": false,
-       "packageDir": "./"
-    }
-],
     "settings": {
         "react": {
           "version": "detect"
