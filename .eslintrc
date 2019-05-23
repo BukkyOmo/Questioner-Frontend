@@ -49,5 +49,8 @@
         "document": true,
         "require": true,
         "window": true
-    }
+    },
+    "required": {
+                "some": [ "nesting", "id" ]
+            }
 }

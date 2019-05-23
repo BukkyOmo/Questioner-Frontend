@@ -5,6 +5,8 @@ import Footer from '../common/Footer';
 import LandingPage from '../components/LandingPage';
 import SignUpForm from '../components/SignUpForm';
 import SignInForm from '../components/SignInForm';
+import AdminPage from '../components/Admin';
+import AdminCreate from '../components/AdminCreate';
 import ErrorPage from '../components/ErrorPage';
 import '../styles/styles.scss';
 
@@ -16,6 +18,8 @@ const Routes = () => (
         <Route exact path='/' component={LandingPage} />
         <Route path='/signup' component={SignUpForm} />
         <Route path='/signin' component={SignInForm} />
+        <Route path='/admin' component={AdminPage} />
+        <Route path='/admin-create' component={AdminCreate} />
         <Route component={ErrorPage} />
       </Switch>
       <Footer />
