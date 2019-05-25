@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { signUpUser } from '../actions';
 
-const endPoint = 'https://bukkyomo-questioner.herokuapp.com/api/v1/auth/signup';
-
-class SignUpForm extends Component {
+export class SignUpForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,14 +18,14 @@ class SignUpForm extends Component {
       email, username, password
     } = this.state;
 
-    const user = {
+    const data = {
       email,
       username,
       password
     };
 
-    const data = await axios.post(endPoint, user);
-    this.setState(data);
+    const { signUpUser: signUp } = this.props;
+    await signUp(data);
   };
 
   handleChange = (e) => {
@@ -37,6 +36,7 @@ class SignUpForm extends Component {
     const {
       email, username, password
     } = this.state;
+    const { loading } = this.props;
     return (
       <React.Fragment>
         <main>
@@ -79,13 +79,15 @@ class SignUpForm extends Component {
             </div>
 
             <div className='items'>
-              <button
-                className='button'
-                id='signup'
-                type='submit'
-              >
+              {!loading ? (
+                <button
+                  className='button'
+                  id='signup'
+                  type='submit'
+                >
                 Signup
-              </button>
+                </button>
+              ) : <h4>Loading</h4>}
             </div>
 
             <div className='items'>
@@ -103,4 +105,14 @@ class SignUpForm extends Component {
   }
 }
 
-export default SignUpForm;
+const mapStateToProps = ({ auth }) => ({
+  loading: auth.isLoading,
+  message: auth.message,
+  status: auth.status
+});
+
+const actionCreators = {
+  signUpUser
+};
+
+export default connect(mapStateToProps, actionCreators)(SignUpForm);

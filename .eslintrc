@@ -19,6 +19,7 @@
         "specialLink": [ "to" ],
         "aspects": [ "noHref", "invalidHref", "preferButton" ]
         }],
+        "no-underscore-dangle":"off",
         "react/jsx-filename-extension": [
             1,
             {
@@ -27,6 +28,7 @@
         ],
         "react/prefer-stateless-function": [0],
         "no-useless-constructor": 1,
+        "no-console": 0,
         "curly": [
             "error",
             "multi-line"
@@ -49,8 +51,5 @@
         "document": true,
         "require": true,
         "window": true
-    },
-    "required": {
-                "some": [ "nesting", "id" ]
-            }
+    }
 }
