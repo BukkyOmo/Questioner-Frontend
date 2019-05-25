@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-
-const endPoint = 'https://bukkyomo-questioner.herokuapp.com/api/v1/auth/signin';
+// import axios from 'axios';
 
 class SignInForm extends Component {
   constructor(props) {
@@ -21,8 +19,8 @@ class SignInForm extends Component {
       password
     };
 
-    const data = await axios.post(endPoint, user);
-    this.setState(data);
+    // const data = await axios.post(endPoint, user);
+    // this.setState(data);
   }
 
    handleChange = (e) => {

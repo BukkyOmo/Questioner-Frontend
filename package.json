@@ -8,7 +8,8 @@
     "start:dev": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "jest": {
     "snapshotSerializers": [
@@ -42,7 +43,10 @@
     "prop-types": "^15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
+    "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "save": "^2.4.0"
   },
   "devDependencies": {
@@ -73,6 +77,7 @@
     "jest": "^24.8.0",
     "node-sass": "4.12.0",
     "react-hot-loader": "4.8.4",
+    "redux-mock-store": "^1.5.3",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
     "url-loader": "1.1.2",

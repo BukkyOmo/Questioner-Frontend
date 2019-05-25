@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import LandingPage from '../components/LandingPage';
-import SignUpForm from '../components/SignUpForm';
+import SignUpFormComponent from '../components/SignUpForm';
 import SignInForm from '../components/SignInForm';
 import AdminPage from '../components/Admin';
 import AdminCreate from '../components/AdminCreate';
@@ -16,7 +16,7 @@ const Routes = () => (
       <Header />
       <Switch>
         <Route exact path='/' component={LandingPage} />
-        <Route path='/signup' component={SignUpForm} />
+        <Route path='/signup' component={SignUpFormComponent} />
         <Route path='/signin' component={SignInForm} />
         <Route path='/admin' component={AdminPage} />
         <Route path='/admin-create' component={AdminCreate} />
