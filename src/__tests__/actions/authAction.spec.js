@@ -4,23 +4,30 @@ import {
   signupPending,
   signupSuccess,
   signupFailure,
-  signUpUser
+  signUpUser,
+  signinPending,
+  signinSuccess,
+  signinFailure,
+  signInUser
 } from '../../actions';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 const store = mockStore({});
 
-const user = {
-  username: 'Johnny29383',
-  email: 'john@doe.com',
-  password: 'johnny29383'
-};
+const success = {
+  status: 201,
+  message: 'You have been successfully registered',
+  token: 'cs66789wh'
+}
 
-const token = 'mynameis7t890w084';
+const failure = {
+  status: 409,
+  error: 'User already exists'
+}
 
-describe('Signup Auth Actions', () => {
-  it('should begin the signup actions', () => {
+describe('Signin Auth Actions', () => {
+  it('should begin the signin actions', () => {
     const action = signupPending();
     expect(action).toEqual({
       type: 'SIGNUP_PENDING'
@@ -28,27 +35,52 @@ describe('Signup Auth Actions', () => {
   });
 
   it('should create a success action', () => {
-    const action = signupSuccess();
+
+    const action = signupSuccess(success);
     expect(action).toEqual({
       type: 'SIGNUP_SUCCESS',
-      payload: {}
+      payload: success
     });
   });
 
   it('should create a failure action', () => {
-    const action = signupFailure();
+    const action = signupFailure(failure);
     expect(action).toEqual({
       type: 'SIGNUP_FAILURE',
-      payload: {}
+      payload: failure
     });
   });
 
   it('should dispatch the signup begin action', () => {
-    store.dispatch(signUpUser(user));
+    store.dispatch(signUpUser());
     expect(store.getActions()).toEqual([{
-      type: 'SIGNUP_PENDING',
-      payload: true
+      type: 'SIGNUP_PENDING'
     },
     ]);
+  });
+});
+
+describe('Signin Auth Actions', () => {
+  it('should begin the signin actions', () => {
+    const action = signinPending();
+    expect(action).toEqual({
+      type: 'SIGNIN_PENDING'
+    });
+  });
+
+  it('should create a success action', () => {
+    const action = signinSuccess(success);
+    expect(action).toEqual({
+      type: 'SIGNIN_SUCCESS',
+      payload: success
+    });
+  });
+
+  it('should create a failure action', () => {
+    const action = signinFailure(failure);
+    expect(action).toEqual({
+      type: 'SIGNIN_FAILURE',
+      payload: failure
+    });
   });
 });

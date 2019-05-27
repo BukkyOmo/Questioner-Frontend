@@ -4,7 +4,7 @@ import Header from '../common/Header';
 import Footer from '../common/Footer';
 import LandingPage from '../components/LandingPage';
 import SignUpFormComponent from '../components/SignUpForm';
-import SignInForm from '../components/SignInForm';
+import SignInFormComponent from '../components/SignInForm';
 import AdminPage from '../components/Admin';
 import AdminCreate from '../components/AdminCreate';
 import ErrorPage from '../components/ErrorPage';
@@ -17,7 +17,7 @@ const Routes = () => (
       <Switch>
         <Route exact path='/' component={LandingPage} />
         <Route path='/signup' component={SignUpFormComponent} />
-        <Route path='/signin' component={SignInForm} />
+        <Route path='/signin' component={SignInFormComponent} />
         <Route path='/admin' component={AdminPage} />
         <Route path='/admin-create' component={AdminCreate} />
         <Route component={ErrorPage} />

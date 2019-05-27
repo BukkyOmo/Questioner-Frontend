@@ -1,5 +1,4 @@
 [![Coverage Status](https://coveralls.io/repos/github/BukkyOmo/Questioner-react/badge.svg?branch=develop)](https://coveralls.io/github/BukkyOmo/Questioner-react?branch=develop)
-
 [![CircleCI](https://circleci.com/gh/BukkyOmo/Questioner-react.svg?style=svg)](https://circleci.com/gh/BukkyOmo/Questioner-react)
 
 # Questioner-react
