@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import axios from 'axios';
+import { connect } from 'react-redux';
+import { signInUser } from '../actions';
 
-class SignInForm extends Component {
+export class SignInForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,13 +15,13 @@ class SignInForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = this.state;
-    const user = {
+    const data = {
       email,
       password
     };
 
-    // const data = await axios.post(endPoint, user);
-    // this.setState(data);
+    const { signInUser: signIn } = this.props;
+    await signIn(data);
   }
 
    handleChange = (e) => {
@@ -62,7 +63,7 @@ class SignInForm extends Component {
                  className='button'
                  type='submit'
                >
-                  Sign In
+                Sign In
                </button>
              </div>
              <div className='items'>
@@ -82,4 +83,15 @@ class SignInForm extends Component {
    }
 }
 
-export default SignInForm;
+const mapStateToProps = state => ({
+  loading: state.auth.isLoading,
+  token: state.auth.token,
+  message: state.auth.message,
+  status: state.auth.status
+});
+
+const actionCreators = {
+  signInUser
+};
+
+export default connect(mapStateToProps, actionCreators)(SignInForm);

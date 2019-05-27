@@ -1,18 +1,20 @@
 import {
   SIGNUP_PENDING,
   SIGNUP_SUCCESS,
-  SIGNUP_FAILURE
+  SIGNUP_FAILURE,
+  SIGNIN_PENDING,
+  SIGNIN_SUCCESS,
+  SIGNIN_FAILURE
 } from '../action-types';
 
 import axios from '../config/axiosConfig';
 
 // actions
-const signupPending = response => ({
+const signupPending = () => ({
   type: SIGNUP_PENDING,
-  payload: response
 });
 
-const signupSuccess = (status, message, token) => ({
+const signupSuccess = ({ status, message, token }) => ({
   type: SIGNUP_SUCCESS,
   payload: {
     status,
@@ -21,7 +23,7 @@ const signupSuccess = (status, message, token) => ({
   }
 });
 
-const signupFailure = (status, error) => ({
+const signupFailure = ({ status, error }) => ({
   type: SIGNUP_FAILURE,
   payload: {
     status,
@@ -29,12 +31,32 @@ const signupFailure = (status, error) => ({
   }
 });
 
+const signinPending = () => ({
+  type: SIGNIN_PENDING
+});
+
+const signinSuccess = ({ token, message, status }) => ({
+  type: SIGNIN_SUCCESS,
+  payload: {
+    token,
+    message,
+    status
+  }
+});
+
+const signinFailure = ({ error, status }) => ({
+  type: SIGNIN_FAILURE,
+  payload: {
+    error,
+    status
+  }
+});
+
 // action-creators
 const signUpUser = userObject => async (dispatch) => {
   try {
-    dispatch(signupPending(true));
+    dispatch(signupPending());
     const response = await axios.post('/auth/signup', userObject);
-    console.log(response);
     const { status } = response;
     const { message } = response.data;
     const { token } = response.data.data[0];
@@ -43,8 +65,21 @@ const signUpUser = userObject => async (dispatch) => {
     const { status } = err.response;
     const { error } = err.response.data;
     dispatch(signupFailure({ status, error }));
-  } finally {
-    dispatch(signupPending(false));
+  }
+};
+
+const signInUser = user => async (dispatch) => {
+  try {
+    dispatch(signinPending());
+    const response = await axios.post('/auth/signin', user);
+    const { token } = response.data.data[0];
+    const { status } = response.data;
+    const { message } = response.data;
+    dispatch(signinSuccess({ token, status, message }));
+  } catch (err) {
+    const { status } = err.response.data;
+    const { error } = err.response.data;
+    dispatch(signinFailure({ status, error }));
   }
 };
 
@@ -52,5 +87,9 @@ export {
   signupPending,
   signupSuccess,
   signupFailure,
-  signUpUser
+  signUpUser,
+  signinPending,
+  signinSuccess,
+  signinFailure,
+  signInUser
 };

@@ -1,42 +1,76 @@
 import {
   SIGNUP_PENDING,
   SIGNUP_SUCCESS,
-  SIGNUP_FAILURE
+  SIGNUP_FAILURE,
+  SIGNIN_PENDING,
+  SIGNIN_SUCCESS,
+  SIGNIN_FAILURE
 } from '../action-types';
 
 const initialState = {
   isLoading: false,
+  isLoggedIn: false,
   status: '',
   message: '',
   token: '',
+  error: '',
   email: '',
   username: '',
+  password: '',
   submit: false,
   redirect: false
 };
 
-const SignUpReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'SIGNUP_PENDING':
+const authReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case SIGNUP_PENDING:
       return {
         ...state,
-        isLoading: action.payload
+        isLoading: payload
       };
 
-    case 'SIGNUP_SUCCESS':
+    case SIGNUP_SUCCESS:
       return {
         ...state,
-        status: action.payload.status,
-        message: action.payload.message,
+        status: payload.status,
+        message: payload.message,
         submit: true
       };
 
-    case 'SIGNUP_FAILURE':
+    case SIGNUP_FAILURE:
       return {
         ...state,
-        status: action.payload.status,
-        error: action.payload.error,
+        status: payload.status,
+        error: payload.error,
         submit: false
+      };
+
+    case SIGNIN_PENDING:
+      return {
+        ...state,
+        isLoading: true
+      };
+
+    case SIGNIN_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        redirect: true,
+        token: payload.token,
+        status: payload.status,
+        message: payload.message,
+        isLoggedIn: true
+      };
+
+    case SIGNIN_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        redirect: false,
+        error: payload.error,
+        status: payload.status,
+        submit: false,
+        isLoggedIn: false
       };
     default:
       return state;
@@ -44,6 +78,6 @@ const SignUpReducer = (state = initialState, action) => {
 };
 
 export {
-  SignUpReducer,
+  authReducer,
   initialState
 };

@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SignInForm from '../../components/SignInForm';
+import { SignInForm } from '../../components/SignInForm';
 
 describe('<SignInForm />', () => {
   const dispatch = jest.fn()
-  const wrapper = shallow(<SignInForm />)
+  const wrapper = shallow(<SignInForm dispatch={dispatch} />)
  it('renders divs banner and svg', () => {
     expect(wrapper.find('div.items').exists()).toBe(true);
  });
