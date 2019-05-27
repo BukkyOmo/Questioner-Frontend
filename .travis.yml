@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - "11.11.0"
+install:
+ npm install
+env:
+  global:
+    - CC_TEST_REPORTER_ID=7c993f61f6e1a652157cce52cdf770bc3c053dd030c4b07f53cac6afa1432bd9
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - npm ci
+  - npm test
+after_success:
+  - npm run coverage
+  - npm run coveralls
+  - npm run report-coverage
+  - npm run codeclimate-report
+  - ./node_modules/.bin/mocha ./app/test/**/*.js -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js
