@@ -10,6 +10,7 @@ module.exports = merge(common, {
   ],
   devServer: {
     contentBase: './build',
+    publicPath: process.env.ASSET_PATH || '/',
     hot: true,
     port: 8000,
     historyApiFallback: true
