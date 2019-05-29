@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ErrorPage from '../../components/ErrorPage';
+import ErrorPage from '../../utils/ErrorPage';
 
 describe('<ErrorPage />', () => {
   it('renders h1 element', () => {

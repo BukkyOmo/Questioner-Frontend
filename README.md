@@ -1,5 +1,4 @@
 [![Coverage Status](https://coveralls.io/repos/github/BukkyOmo/Questioner-react/badge.svg?branch=develop)](https://coveralls.io/github/BukkyOmo/Questioner-react?branch=develop)
-[![CircleCI](https://circleci.com/gh/BukkyOmo/Questioner-react.svg?style=svg)](https://circleci.com/gh/BukkyOmo/Questioner-react)
 [![Build Status](https://travis-ci.org/BukkyOmo/Questioner-react.svg?branch=develop)](https://travis-ci.org/BukkyOmo/Questioner-react)
 <a href="https://codeclimate.com/github/BukkyOmo/Questioner-react/maintainability"><img src="https://api.codeclimate.com/v1/badges/0e3e0b920d64a4d7a590/maintainability" /></a>
 

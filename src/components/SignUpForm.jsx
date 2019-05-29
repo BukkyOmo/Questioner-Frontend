@@ -111,8 +111,8 @@ const mapStateToProps = ({ auth }) => ({
   status: auth.status
 });
 
-const actionCreators = {
+const actionCreator = {
   signUpUser
 };
 
-export default connect(mapStateToProps, actionCreators)(SignUpForm);
+export default connect(mapStateToProps, actionCreator)(SignUpForm);

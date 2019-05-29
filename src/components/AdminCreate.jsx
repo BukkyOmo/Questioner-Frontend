@@ -1,113 +1,152 @@
-// import React, { Component } from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createMeetup } from '../actions';
 
-// class AdminCreate extends Component {
-//   constructor(props) {
-//     super(props);
-//     // this.state = {
-//     //   topic: '',
-//     //   location: '',
-//     //   meetup_date: '',
-//     //   image: '',
-//     //   tags: ''
-//     // };
-//   }
+export class CreateMeetup extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      topic: '',
+      location: '',
+      happeningOn: '',
+      image: '',
+      tags: ''
+    };
+  }
 
-//   // handleSubmit = () => {
-//   //   console.log(this.state);
-//   // }
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const {
+      topic,
+      location,
+      happeningOn,
+      image,
+      tags
+    } = this.state;
+    const data = {
+      topic,
+      location,
+      happeningOn,
+      image,
+      tags
+    };
+    const { createMeetup: meetup } = this.props;
+    const token = localStorage.getItem('token');
+    const config = {
+      headers: {
+        token
+      }
+    };
+    await meetup(data, config);
+  };
 
-//   render() {
-//     const {
-//       topic,
-//       location,
-//       meetupDate,
-//       meetupImage,
-//       meetupTag
-//     } = this.state;
-//     return (
-//       <React.Fragment>
-//         <form action='POST' className='flex_admincreate' onSubmit='this.handleSubmit'>
-//           <div className='items'>
-//             <h1>Add Meetup</h1>
-//           </div>
-//           <div>
-//             <label Htmlfor='meetup_topic'>
-//               Topic
-//               <div className='items'>
-//                 <input
-//                   type='text'
-//                   name='meetup_topic'
-//                   id='meetup_topic'
-//                   placeholder='topic'
-//                   value={topic}
-//                 />
-//               </div>
-//             </label>
-//           </div>
-//           <div>
-//             <label Htmlfor='meetup_location'>
-//               Location
-//               <div className='items'>
-//                 <input
-//                   type='text'
-//                   name='meetup_location'
-//                   id='meetup_location'
-//                   placeholder='location'
-//                   value={location}
-//                 />
-//               </div>
-//             </label>
-//           </div>
-//           <div>
-//             <label Htmlfor='meetup_date'>
-//               Date
-//               <div className='items'>
-//                 <input
-//                   type='date'
-//                   name='meetup_date'
-//                   id='meetup_date'
-//                   placeholder='date'
-//                   value={meetupDate}
-//                 />
-//               </div>
-//             </label>
-//           </div>
-//           <div>
-//             <label Htmlfor='image'>
-//               Image
-//               <div className='items_create'>
-//                 <input
-//                   type='file'
-//                   name='meetup_image'
-//                   id='meetup_image'
-//                   placeholder='image'
-//                   value={meetupImage}
-//                 />
-//               </div>
-//             </label>
-//           </div>
-//           <div>
-//             <label Htmlfor='meetup_tag'>
-//               Tags
-//               <div className='items'>
-//                 <input
-//                   type='text'
-//                   name='meetup_tag'
-//                   id='meetup_tag'
-//                   placeholder='Add tags'
-//                   value={meetupTag}
-//                 />
-//               </div>
-//             </label>
-//           </div>
-//           <div className='items'>
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-//             <input type='button' value='Add meetup' />
-//           </div>
-//         </form>
-//       </React.Fragment>
-//     );
-//   }
-// }
+  render() {
+    const {
+      topic, location, happeningOn, image, tags
+    } = this.state;
+    const { loading } = this.props;
+    return (
+      <React.Fragment>
+        <form className='flex_admincreate' onSubmit={this.handleSubmit}>
+          <div className='items'>
+            <h1>Add Meetup</h1>
+          </div>
+          <div>
+            <label htmlFor='meetup_topic'>
+              Topic
+              <div className='items'>
+                <input
+                  type='text'
+                  name='topic'
+                  placeholder='topic'
+                  onChange={this.handleChange}
+                  value={topic}
+                />
+              </div>
+            </label>
+          </div>
+          <div>
+            <label htmlFor='meetup_location'>
+              Location
+              <div className='items'>
+                <input
+                  type='text'
+                  name='location'
+                  placeholder='location'
+                  onChange={this.handleChange}
+                  value={location}
+                />
+              </div>
+            </label>
+          </div>
+          <div>
+            <label htmlFor='meetup_date'>
+              Date
+              <div className='items'>
+                <input
+                  type='date'
+                  name='happeningOn'
+                  placeholder='date'
+                  onChange={this.handleChange}
+                  value={happeningOn}
+                />
+              </div>
+            </label>
+          </div>
+          <div>
+            <label htmlFor='image'>
+              Image
+              <div className='items_create'>
+                <input
+                  type='file'
+                  name='image'
+                  placeholder='image'
+                  onChange={this.handleChange}
+                  value={image}
+                />
+              </div>
+            </label>
+          </div>
+          <div>
+            <label htmlFor='meetup_tag'>
+              Tags
+              <div className='items'>
+                <input
+                  type='text'
+                  name='tags'
+                  placeholder='Add tags'
+                  onChange={this.handleChange}
+                  value={tags}
+                />
+              </div>
+            </label>
+          </div>
+          <div className='items'>
+            <button className='button' type='submit' value='Add meetup'>
+              Create Meetup
+            </button>
+          </div>
+        </form>
+      </React.Fragment>
+    );
+  }
+}
 
-// export default AdminCreate;
+const mapStateToProps = ({ meetup }) => ({
+  loading: meetup.isLoading,
+  submit: meetup.submit,
+  redirect: meetup.redirect
+});
+
+const actionCreator = {
+  createMeetup
+};
+
+export default connect(
+  mapStateToProps,
+  actionCreator
+)(CreateMeetup);
