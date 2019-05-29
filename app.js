@@ -15,8 +15,8 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const port = 8080 || process.env.NODE_ENV;
+const PORT = 8080 || process.env.NODE_ENV;
 
-app.listen(port, () => {
-  console.log(`App already started on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`App already started on port ${PORT}`);
 });
