@@ -11,7 +11,7 @@ import axios from '../config/axiosConfig';
 
 // actions
 const signupPending = () => ({
-  type: SIGNUP_PENDING,
+  type: SIGNUP_PENDING
 });
 
 const signupSuccess = ({ status, message, token }) => ({
@@ -76,6 +76,7 @@ const signInUser = user => async (dispatch) => {
     const { status } = response.data;
     const { message } = response.data;
     dispatch(signinSuccess({ token, status, message }));
+    localStorage.setItem('token', token);
   } catch (err) {
     const { status } = err.response.data;
     const { error } = err.response.data;

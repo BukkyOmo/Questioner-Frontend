@@ -9,6 +9,13 @@ import {
   signInUser
 } from './authActions';
 
+import {
+  createMeetupPending,
+  createMeetupSuccess,
+  createMeetupFailure,
+  createMeetup
+} from './meetupActions';
+
 export {
   signupPending,
   signupSuccess,
@@ -17,5 +24,9 @@ export {
   signinPending,
   signinSuccess,
   signinFailure,
-  signInUser
+  signInUser,
+  createMeetupPending,
+  createMeetupSuccess,
+  createMeetupFailure,
+  createMeetup
 };

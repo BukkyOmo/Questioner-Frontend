@@ -1,34 +1,32 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/app
+    environment:
+      CC_TEST_REPORTER_ID: 7c993f61f6e1a652157cce52cdf770bc3c053dd030c4b07f53cac6afa1432bd9
     docker:
       - image: circleci/node:8
+    working_directory: ~/app
     steps:
       - checkout
-      - run:
-          name: update-npm
-          command: 'sudo npm install'
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-v2-{{ checksum "package.json" }}
       - run:
-          name: install-npm-wee
-          command: npm install
+          name: Install Dependencies
+          command: |
+            npm ci
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-v2-{{ checksum "package.json" }}
           paths:
-            - ./node_modules
+            - ~/.npm
+            - ~/.cache
       - run:
-          name: test
-          command: npm test
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
       - run:
-          name: code-coverage
-          command: './node_modules/.bin/nyc report --reporter=text-lcov'
-      - store_artifacts:
-          path: test-results.xml
-          prefix: tests
-      - store_artifacts:
-          path: coverage
-          prefix: coverage
-      - store_test_results:
-          path: test-results.xml
+          name: Run Test and Coverage
+          command: |
+            ./cc-test-reporter before-build
+            npm test -- --coverage -u
+            ./cc-test-reporter after-build --exit-code $?

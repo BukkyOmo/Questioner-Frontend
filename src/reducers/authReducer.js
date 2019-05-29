@@ -26,7 +26,7 @@ const authReducer = (state = initialState, { type, payload }) => {
     case SIGNUP_PENDING:
       return {
         ...state,
-        isLoading: payload
+        isLoading: true
       };
 
     case SIGNUP_SUCCESS:
@@ -34,7 +34,7 @@ const authReducer = (state = initialState, { type, payload }) => {
         ...state,
         status: payload.status,
         message: payload.message,
-        submit: true
+        submit: false
       };
 
     case SIGNUP_FAILURE:

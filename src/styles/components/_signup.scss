@@ -1,62 +1,59 @@
-body{
-  @import url('https://fonts.googleapis.com/css?family=Lato');
-@mixin transform($transforms) {
-	   -moz-transform: $transforms;
-	     -o-transform: $transforms;
-	    -ms-transform: $transforms;
-	-webkit-transform: $transforms;
-          transform: $transforms;
-}
-body
-{
-    background-color: $background;
-}
-
-.flex
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    min-width: 30%;
-    height: 455px;
-    box-shadow: 2px 2px 2px #e4e6e8;
-    padding: 10px;
-    background-color: #fff;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
+body {
+    @import url('https://fonts.googleapis.com/css?family=Lato');
+    @mixin transform($transforms) {
+        -moz-transform: $transforms;
+        -o-transform: $transforms;
+        -ms-transform: $transforms;
+        -webkit-transform: $transforms;
+        transform: $transforms;
+    }
+    body {
+        background-color: $background;
+    }
+    .flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        min-width: 30%;
+        height: 455px;
+        box-shadow: 2px 2px 2px #e4e6e8;
+        padding: 10px;
+        background-color: #fff;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
 }
 
-.error{
+.error {
     font-size: 12px;
     color: $red;
     display: none;
 }
 
-#msg{
+#msg {
     color: $green;
 }
 
-.align
-{
+.align {
     text-align: $center;
     font-size: 30px;
     margin-bottom: 25px;
 }
 
-.items
-{
+.items {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     height: 45px;
+}
 
- }
-
- input[type=text], input[type=email], input[type=date], input[type=select], input[type=password]
- {
+input[type=text],
+input[type=email],
+input[type=date],
+input[type=select],
+input[type=password] {
     border: 1px solid #e4e6e8;
     padding-left: 10px;
     height: 44px;
@@ -65,8 +62,7 @@ body
     width: 96%;
 }
 
-.items input[type=button]
-{
+.items input[type=button] {
     height: 38px;
     width: 96%;
     margin-top: 10px;
@@ -76,8 +72,7 @@ body
     color: $white;
 }
 
-.button
-{
+.button {
     height: 38px;
     width: 96%;
     margin-top: 10px;
@@ -87,48 +82,41 @@ body
     color: $white;
 }
 
-.button a
-{
+.button a {
     color: $white;
 }
 
-.items input::placeholder
-{
+.items input::placeholder {
     padding: 5px;
     color: $grey;
 }
 
-p
-{
+p {
     font-size: 14px;
 }
 
-#login
-{
+#login {
     margin-top: 2%;
     text-align: $center;
 }
 
-a:link
-{
+a:link {
     text-decoration: none;
 }
 
-@media only screen and (max-width: 600px) and (min-width: 320px)
- {
- .flex
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    min-width: 30%;
-    height: 455px;
-    box-shadow: 2px 2px 2px #e4e6e8;
-    padding: 10px;
-    background-color: #fff;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    top: 50%;
-    left: 50%;
+@media only screen and (max-width: 600px) and (min-width: 320px) {
+    .flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        min-width: 30%;
+        height: 455px;
+        box-shadow: 2px 2px 2px #e4e6e8;
+        padding: 10px;
+        background-color: #fff;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
 }
- }
