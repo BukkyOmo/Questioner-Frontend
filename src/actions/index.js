@@ -16,6 +16,13 @@ import {
   createMeetup
 } from './meetupActions';
 
+import {
+  getAllMeetupPending,
+  getAllMeetupSuccess,
+  getAllMeetupFailure,
+  getAllMeetups
+} from './getAllMeetupsActions';
+
 export {
   signupPending,
   signupSuccess,
@@ -28,5 +35,9 @@ export {
   createMeetupPending,
   createMeetupSuccess,
   createMeetupFailure,
-  createMeetup
+  createMeetup,
+  getAllMeetupPending,
+  getAllMeetupSuccess,
+  getAllMeetupFailure,
+  getAllMeetups
 };

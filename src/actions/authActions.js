@@ -68,10 +68,10 @@ const signUpUser = userObject => async (dispatch) => {
   }
 };
 
-const signInUser = user => async (dispatch) => {
+const signInUser = (user, config) => async (dispatch) => {
   try {
     dispatch(signinPending());
-    const response = await axios.post('/auth/signin', user);
+    const response = await axios.post('/auth/signin', user, config);
     const { token } = response.data.data[0];
     const { status } = response.data;
     const { message } = response.data;

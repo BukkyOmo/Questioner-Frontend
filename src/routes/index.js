@@ -7,6 +7,7 @@ import SignUpFormComponent from '../components/SignUpForm';
 import SignInFormComponent from '../components/SignInForm';
 import AdminPage from '../components/Admin';
 import CreateMeetupComponent from '../components/AdminCreate';
+import AllMeetupsComponent from '../components/AllMeetups';
 import ErrorPage from '../utils/ErrorPage';
 import '../styles/styles.scss';
 
@@ -20,6 +21,7 @@ const Routes = () => (
         <Route path='/signin' component={SignInFormComponent} />
         <Route path='/admin' component={AdminPage} />
         <Route path='/admin-create' component={CreateMeetupComponent} />
+        <Route path='/meetups' component={AllMeetupsComponent} />
         <Route component={ErrorPage} />
       </Switch>
       <Footer />
