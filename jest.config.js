@@ -22,6 +22,6 @@ module.exports = {
       moduleNameMapper: {
         '^.+\\.(jpg|png|svg)$': 'babel-jest'
   },
-      modulePathIgnorePatterns: [ 'src/store.js', 'src/App.js', 'index.js', 'src/reducers/index.js']
+      modulePathIgnorePatterns: [ 'src/store.js', 'src/App.js', 'index.js', 'src/reducers/index.js', '/mocks']
 
   };

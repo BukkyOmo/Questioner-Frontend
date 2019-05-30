@@ -17,11 +17,7 @@ export class CreateMeetup extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const {
-      topic,
-      location,
-      happeningOn,
-      image,
-      tags
+      topic, location, happeningOn, image, tags
     } = this.state;
     const data = {
       topic,
@@ -35,7 +31,7 @@ export class CreateMeetup extends Component {
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data',
-        authorization: token
+        token
       }
     };
     await meetup(data, config);
@@ -43,13 +39,11 @@ export class CreateMeetup extends Component {
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state);
   };
 
   imageChange = (e) => {
     this.setState({ [e.target.name]: e.target.files[0] });
-    console.log(this.state);
-  }
+  };
 
   render() {
     const {

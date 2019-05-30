@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import LandingPage from '../components/LandingPage';
@@ -8,15 +8,17 @@ import SignInFormComponent from '../components/SignInForm';
 import AdminPage from '../components/Admin';
 import CreateMeetupComponent from '../components/AdminCreate';
 import AllMeetupsComponent from '../components/AllMeetups';
+import SingleMeetup from '../components/SingleMeetup';
 import ErrorPage from '../utils/ErrorPage';
 import '../styles/styles.scss';
 
 const Routes = () => (
-  <BrowserRouter>
+  <Router>
     <div>
       <Header />
       <Switch>
         <Route exact path='/' component={LandingPage} />
+        <Route path='/meetups/:id' component={SingleMeetup} />
         <Route path='/signup' component={SignUpFormComponent} />
         <Route path='/signin' component={SignInFormComponent} />
         <Route path='/admin' component={AdminPage} />
@@ -26,7 +28,7 @@ const Routes = () => (
       </Switch>
       <Footer />
     </div>
-  </BrowserRouter>
+  </Router>
 );
 
 export default Routes;

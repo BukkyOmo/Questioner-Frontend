@@ -44,7 +44,7 @@ export class AllMeetups extends Component {
                 <p>{meetup.location}</p>
 
                 <p className='flex-item2'>
-                  <Link to='single-meetup.html'>View Details</Link>
+                  <Link to={`/meetups/${meetup.id}`}>View Details</Link>
                 </p>
               </div>
             </div>

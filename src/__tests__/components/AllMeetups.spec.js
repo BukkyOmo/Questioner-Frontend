@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { AllMeetups } from '../../components/Allmeetups';
+import { AllMeetups } from '../../components/AllMeetups';
 import { meetup as meetupsMock } from '../../mocks/meetup-mock';
 
 describe('<AllMeetups />', () => {
