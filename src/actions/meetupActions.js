@@ -25,7 +25,11 @@ const createMeetupFailure = errorMessage => ({
 const createMeetup = (meetupObject, config) => async (dispatch) => {
   try {
     dispatch(createMeetupPending());
-    const response = await axios.post('/meetups', meetupObject, config);
+
+    const formData = new FormData();
+    Object.keys(meetupObject).forEach(key => formData.append(key, meetupObject[key]));
+
+    const response = await axios.post('/meetups', formData, config);
     const data = response.data.data[0];
     dispatch(createMeetupSuccess(data));
   } catch (err) {

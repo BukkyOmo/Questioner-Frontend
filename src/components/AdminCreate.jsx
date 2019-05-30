@@ -34,7 +34,8 @@ export class CreateMeetup extends Component {
     const token = localStorage.getItem('token');
     const config = {
       headers: {
-        token
+        'Content-Type': 'multipart/form-data',
+        authorization: token
       }
     };
     await meetup(data, config);
@@ -42,7 +43,13 @@ export class CreateMeetup extends Component {
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state);
   };
+
+  imageChange = (e) => {
+    this.setState({ [e.target.name]: e.target.files[0] });
+    console.log(this.state);
+  }
 
   render() {
     const {
@@ -105,8 +112,7 @@ export class CreateMeetup extends Component {
                   type='file'
                   name='image'
                   placeholder='image'
-                  onChange={this.handleChange}
-                  value={image}
+                  onChange={this.imageChange}
                 />
               </div>
             </label>

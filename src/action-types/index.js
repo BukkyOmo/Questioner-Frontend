@@ -1,5 +1,6 @@
 import auth from './authActionType';
 import meetup from './meetupActionType';
+import getAllMeetups from './getAllmeetupsActionType';
 
 const {
   SIGNUP_PENDING,
@@ -16,6 +17,12 @@ const {
   CREATE_MEETUP_FAILURE
 } = meetup;
 
+const {
+  GET_ALL_MEETUPS_PENDING,
+  GET_ALL_MEETUPS_SUCCESS,
+  GET_ALL_MEETUPS_FAILURE
+} = getAllMeetups;
+
 export {
   SIGNUP_PENDING,
   SIGNUP_SUCCESS,
@@ -25,5 +32,8 @@ export {
   SIGNIN_FAILURE,
   CREATE_MEETUP_PENDING,
   CREATE_MEETUP_SUCCESS,
-  CREATE_MEETUP_FAILURE
+  CREATE_MEETUP_FAILURE,
+  GET_ALL_MEETUPS_PENDING,
+  GET_ALL_MEETUPS_SUCCESS,
+  GET_ALL_MEETUPS_FAILURE
 };
