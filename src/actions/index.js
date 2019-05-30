@@ -23,6 +23,13 @@ import {
   getAllMeetups
 } from './getAllMeetupsActions';
 
+import {
+  getSingleMeetupPending,
+  getSingleMeetupSuccess,
+  getSingleMeetupFailure,
+  getSingleMeetup
+} from './singleMeetupActions';
+
 export {
   signupPending,
   signupSuccess,
@@ -39,5 +46,9 @@ export {
   getAllMeetupPending,
   getAllMeetupSuccess,
   getAllMeetupFailure,
-  getAllMeetups
+  getAllMeetups,
+  getSingleMeetupPending,
+  getSingleMeetupSuccess,
+  getSingleMeetupFailure,
+  getSingleMeetup
 };

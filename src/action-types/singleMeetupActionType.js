@@ -1,0 +1,7 @@
+const singleMeetup = {
+  GET_MEETUP_PENDING: 'GET_MEETUP_PENDING',
+  GET_MEETUP_SUCCESS: 'GET_MEETUP_SUCCESS',
+  GET_MEETUP_FAILURE: 'GET_MEETUP_FAILURE'
+};
+
+export default singleMeetup;
