@@ -18,6 +18,40 @@ body {
         height: 100vh;
         position: relative;
     }
+    .mt_30 {
+        margin-top: 30px;
+    }
+    .submit {
+        height: 40px;
+        background-color: #ff690c;
+        margin: 10px;
+        width: 97px;
+        color: #fff;
+        border: 1px solid #ff690c;
+        font-size: 16px;
+    }
+    .question-link {
+        text-decoration: none;
+    }
+    textarea {
+        resize: none;
+        outline: none;
+        border: #fff;
+        width: 45vw;
+        box-shadow: 5px 5px 5px #e4e6e8;
+    }
+    #question-title {
+        outline: none;
+        border: #fff;
+        width: 44vw;
+        height: 5vh;
+    }
+    hr {
+        color: #e4e6e8;
+        height: 1px;
+        background-color: #e4e6e8;
+        border: none;
+    }
     .btn {
         width: 100%;
         line-height: 1.5;
