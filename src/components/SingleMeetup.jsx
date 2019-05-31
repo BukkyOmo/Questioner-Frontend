@@ -30,7 +30,10 @@ export class SingleMeetup extends Component {
     return (
       <div>
         {loading ? (
-          <img src='https://www.voya.ie/Interface/Icons/LoadingBasketContents.gif' alt='spinner' />
+          <img
+            src='https://www.voya.ie/Interface/Icons/LoadingBasketContents.gif'
+            alt='spinner'
+          />
         ) : (
           <main className='meetup-contain'>
             <div className='meetup-flex'>
@@ -93,14 +96,25 @@ export class SingleMeetup extends Component {
               </div>
             </div>
 
-            <h3>Ask your question</h3>
-
+            <h3>Ask Questions</h3>
+            <h4 htmlFor='question-title'>Enter question title</h4>
+            <input type='text' id='question-title' />
+            <h4 htmlFor='ask_questions'>Enter a question</h4>
             <textarea
               name='ask_questions'
               id='ask_questions'
               cols='83'
               rows='4'
+              placeholder='Post a question'
             />
+
+            <button type='submit' id='submit-question' className='submit'>
+              Post
+            </button>
+
+            <h3 className='mt_30'>Questions About this Meetup</h3>
+
+            <div className='question-flex' />
           </main>
         )}
       </div>
