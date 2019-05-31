@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getSingleMeetup } from '../actions/singleMeetupActions';
+import { createQuestion } from '../actions/createQuestionActions';
 import image1 from '../assets/images/event1.jpg';
 
 export class SingleMeetup extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      title: '',
+      body: '',
+    };
   }
 
   componentDidMount() {
@@ -24,9 +28,27 @@ export class SingleMeetup extends Component {
     fetchSingleMeetup(id, config);
   }
 
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { match: { params: { id } } } = this.props;
+    const { title, body } = this.state;
+    const data = {
+      title,
+      body,
+      id
+    };
+    const { createQuestion: question } = this.props;
+    console.log(data);
+    question(data);
+  };
+
   render() {
     const { singleMeetup, loading } = this.props;
-    console.log(singleMeetup);
+    const { title, body } = this.state;
     return (
       <div>
         {loading ? (
@@ -63,9 +85,7 @@ export class SingleMeetup extends Component {
                 </div>
               </div>
             </div>
-
             <h3>Questions About this Meetup</h3>
-
             <div className='question-flex'>
               <Link to='question.html' className='question-link'>
                 What are the reasons for starting the pre-bootcamp workshop
@@ -95,25 +115,34 @@ export class SingleMeetup extends Component {
                 </div>
               </div>
             </div>
-
             <h3>Ask Questions</h3>
             <h4 htmlFor='question-title'>Enter question title</h4>
-            <input type='text' id='question-title' />
-            <h4 htmlFor='ask_questions'>Enter a question</h4>
+            <input
+              type='text'
+              id='question-title'
+              name='title'
+              onChange={this.handleChange}
+              value={title}
+            />
+            <h4 htmlFor='questions'>Enter a question</h4>
             <textarea
-              name='ask_questions'
+              name='body'
               id='ask_questions'
               cols='83'
               rows='4'
+              onChange={this.handleChange}
+              value={body}
               placeholder='Post a question'
             />
-
-            <button type='submit' id='submit-question' className='submit'>
+            <button
+              type='submit'
+              id='submit-question'
+              className='submit'
+              onClick={this.handleSubmit}
+            >
               Post
             </button>
-
             <h3 className='mt_30'>Questions About this Meetup</h3>
-
             <div className='question-flex' />
           </main>
         )}
@@ -125,9 +154,10 @@ export class SingleMeetup extends Component {
 const mapStateToProps = state => ({
   loading: state.singlemeetup.isLoading,
   singleMeetup: state.singlemeetup.meetup
+  // createquestion: state.
 });
 
 export default connect(
   mapStateToProps,
-  { getSingleMeetup }
+  { getSingleMeetup, createQuestion }
 )(SingleMeetup);
