@@ -22,65 +22,63 @@ export class SignInForm extends Component {
 
     const { signInUser: signIn } = this.props;
     await signIn(data);
-  }
 
-   handleChange = (e) => {
-     this.setState({ [e.target.name]: e.target.value });
-   }
+    const { history, status } = this.props;
+    if (status === 200) {
+      history.push('/meetups');
+    } else {
+      history.push('/signin');
+    }
+  };
 
-   render() {
-     const { email, password } = this.state;
-     return (
-       <React.Fragment>
-         <main>
-           <form className='flex' onSubmit={this.handleSubmit}>
-             <div className='items'>
-               <h1>Sign In</h1>
-             </div>
-             <div className='items'>
-               <input
-                 type='email'
-                 name='email'
-                 id='email'
-                 placeholder='email'
-                 onChange={this.handleChange}
-                 value={email}
-               />
-             </div>
-             <div className='items'>
-               <input
-                 type='password'
-                 name='password'
-                 id='password'
-                 placeholder='Password'
-                 onChange={this.handleChange}
-                 value={password}
-               />
-             </div>
-             <div className='items'>
-               <button
-                 id='login'
-                 className='button'
-                 type='submit'
-               >
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  render() {
+    const { email, password } = this.state;
+    return (
+      <React.Fragment>
+        <main>
+          <form className='flex' onSubmit={this.handleSubmit}>
+            <div className='items'>
+              <h1>Sign In</h1>
+            </div>
+            <div className='items'>
+              <input
+                type='email'
+                name='email'
+                id='email'
+                placeholder='email'
+                onChange={this.handleChange}
+                value={email}
+              />
+            </div>
+            <div className='items'>
+              <input
+                type='password'
+                name='password'
+                id='password'
+                placeholder='Password'
+                onChange={this.handleChange}
+                value={password}
+              />
+            </div>
+            <div className='items'>
+              <button id='login' className='button' type='submit'>
                 Sign In
-               </button>
-             </div>
-             <div className='items'>
-               <p>
-                Dont have an account?
-                 {' '}
-                 <Link to='/signup'> Sign Up </Link>
-               </p>
-             </div>
-             <div className='items forgot'>
-               <p><a href='forgotpassword.html'> Forgot Password? </a></p>
-             </div>
-           </form>
-         </main>
-       </React.Fragment>
-     );
-   }
+              </button>
+            </div>
+            <div className='items-forgot'>
+              <p>
+                <Link to='/signup'> Sign Up </Link>
+              </p>
+            </div>
+          </form>
+        </main>
+      </React.Fragment>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
@@ -94,4 +92,7 @@ const actionCreators = {
   signInUser
 };
 
-export default connect(mapStateToProps, actionCreators)(SignInForm);
+export default connect(
+  mapStateToProps,
+  actionCreators
+)(SignInForm);

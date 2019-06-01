@@ -7,7 +7,7 @@ import {
 const initialState = {
   isLoading: false,
   meetup: {},
-  errorMessages: ''
+  errorMessages: {}
 };
 
 const singleMeetupReducer = (state = initialState, action) => {

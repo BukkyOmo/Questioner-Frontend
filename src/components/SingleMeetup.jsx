@@ -16,16 +16,9 @@ export class SingleMeetup extends Component {
 
   componentDidMount() {
     const { match, getSingleMeetup: fetchSingleMeetup } = this.props;
+    console.log(match);
     const { id } = match.params;
-    console.log(id);
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        token
-      }
-    };
-    fetchSingleMeetup(id, config);
+    fetchSingleMeetup(id);
   }
 
   handleChange = (e) => {
@@ -154,7 +147,6 @@ export class SingleMeetup extends Component {
 const mapStateToProps = state => ({
   loading: state.singlemeetup.isLoading,
   singleMeetup: state.singlemeetup.meetup
-  // createquestion: state.
 });
 
 export default connect(
