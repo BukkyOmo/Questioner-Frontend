@@ -26,10 +26,8 @@ const createQuestion = question => async (dispatch) => {
   try {
     dispatch(createQuestionPending());
     const response = await axios.post('/questions', question);
-    console.log(response.data);
-    dispatch(createQuestionSuccess(response.data));
+    dispatch(createQuestionSuccess(response.data.data[0].question));
   } catch (err) {
-    console.log(err);
     dispatch(createQuestionFailure(err.response));
   }
 };

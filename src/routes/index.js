@@ -9,6 +9,7 @@ import AdminPage from '../components/Admin';
 import CreateMeetupComponent from '../components/AdminCreate';
 import AllMeetupsComponent from '../components/AllMeetups';
 import SingleMeetupComponent from '../components/SingleMeetup';
+import AuthorizationHOC from '../components/AuthorizationHOC';
 import ErrorPage from '../utils/ErrorPage';
 import '../styles/styles.scss';
 
@@ -18,12 +19,12 @@ const Routes = () => (
       <Header />
       <Switch>
         <Route exact path='/' component={LandingPage} />
-        <Route path='/meetups/:id' component={SingleMeetupComponent} />
+        <AuthorizationHOC exact path='/meetups' component={AllMeetupsComponent} />
+        <Route exact path='/meetups/:id' component={SingleMeetupComponent} />
         <Route path='/signup' component={SignUpFormComponent} />
         <Route path='/signin' component={SignInFormComponent} />
-        <Route path='/admin' component={AdminPage} />
-        <Route path='/admin-create' component={CreateMeetupComponent} />
-        <Route path='/meetups' component={AllMeetupsComponent} />
+        <AuthorizationHOC exact path='/admin' component={AdminPage} />
+        <AuthorizationHOC exact path='/admin-create' component={CreateMeetupComponent} />
         <Route component={ErrorPage} />
       </Switch>
       <Footer />

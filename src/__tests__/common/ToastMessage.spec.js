@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Footer from '../../common/Footer';
+import ToastMessage from '../../common/ToastMessage';
 
-describe('<Footer />', () => {
+describe('<ToastMessage />', () => {
   it('renders p element', () => {
-    const wrapper = shallow(<Footer />)
+    const wrapper = shallow(<ToastMessage />)
     expect(wrapper.find('p').exists()).toBe(true);
   });
    it('renders correctly using snapshot', () => {
-    expect(Footer).toMatchSnapshot();
+    expect(ToastMessage).toMatchSnapshot();
    });
 });
