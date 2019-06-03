@@ -115,7 +115,11 @@ export class SignUpForm extends Component {
                   Signup
                 </button>
               ) : (
-                <h4>Loading</h4>
+                <img
+                  src='https://www.voya.ie/Interface/Icons/LoadingBasketContents.gif'
+                  alt='spinner'
+                  className='spinner-button'
+                />
               )}
             </div>
 
