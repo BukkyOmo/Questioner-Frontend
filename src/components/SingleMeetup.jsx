@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getSingleMeetup } from '../actions/singleMeetupActions';
 import { createQuestion } from '../actions/createQuestionActions';
+import { getQuestion } from '../actions/getQuestionActions';
 import image1 from '../assets/images/event1.jpg';
 
 export class SingleMeetup extends Component {
@@ -10,15 +11,15 @@ export class SingleMeetup extends Component {
     super(props);
     this.state = {
       title: '',
-      body: '',
+      body: ''
     };
   }
 
   componentDidMount() {
-    const { match, getSingleMeetup: fetchSingleMeetup } = this.props;
-    console.log(match);
+    const { match, getSingleMeetup: fetchSingleMeetup, getQuestion: fetchMeetupQuestions } = this.props;
     const { id } = match.params;
     fetchSingleMeetup(id);
+    fetchMeetupQuestions(id);
   }
 
   handleChange = (e) => {
@@ -35,19 +36,20 @@ export class SingleMeetup extends Component {
       id
     };
     const { createQuestion: question } = this.props;
-    console.log(data);
     question(data);
   };
 
   render() {
-    const { singleMeetup, loading } = this.props;
+    const { singleMeetup, loading, singleQuestion: { data } } = this.props;
     const { title, body } = this.state;
+    console.log(this.props);
     return (
       <div>
         {loading ? (
           <img
             src='https://www.voya.ie/Interface/Icons/LoadingBasketContents.gif'
             alt='spinner'
+            className='spinner'
           />
         ) : (
           <main className='meetup-contain'>
@@ -79,35 +81,37 @@ export class SingleMeetup extends Component {
               </div>
             </div>
             <h3>Questions About this Meetup</h3>
-            <div className='question-flex'>
-              <Link to='question.html' className='question-link'>
-                What are the reasons for starting the pre-bootcamp workshop
-              </Link>
+            { data && data.map(question => (
+              <div className='question-flex' key={data.id}>
+                <Link to={`/question/${question.id}`} className='question-link'>
+                  {question.body}
+                </Link>
 
-              <h6>posted by Bukola</h6>
-              <hr />
+                <h6>posted by Bukola</h6>
+                <hr />
 
-              <div className='icons'>
-                <div>
-                  <button className='btn-bg' type='button'>
-                    <i className='fas fa-caret-up fa-2x bg-blue' />
-                  </button>
-                  <span className='upvote-amount'>15</span>
-                </div>
-                <div>
-                  <button className='btn-bg' type='button'>
-                    <i className='fas fa-caret-down fa-2x bg-red' />
-                  </button>
-                  <span className='downvote-amount'>10</span>
-                </div>
-                <div>
-                  <button className='btn-bg' type='button'>
-                    <i className='fas fa-comment fa-2x' />
-                  </button>
-                  <span className='comment-amount'>5</span>
+                <div className='icons'>
+                  <div>
+                    <button className='btn-bg' type='button'>
+                      <i className='fas fa-caret-up fa-2x bg-blue' />
+                    </button>
+                    <span className='upvote-amount'>15</span>
+                  </div>
+                  <div>
+                    <button className='btn-bg' type='button'>
+                      <i className='fas fa-caret-down fa-2x bg-red' />
+                    </button>
+                    <span className='downvote-amount'>10</span>
+                  </div>
+                  <div>
+                    <button className='btn-bg' type='button'>
+                      <i className='fas fa-comment fa-2x' />
+                    </button>
+                    <span className='comment-amount'>5</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
             <h3>Ask Questions</h3>
             <h4 htmlFor='question-title'>Enter question title</h4>
             <input
@@ -135,8 +139,6 @@ export class SingleMeetup extends Component {
             >
               Post
             </button>
-            <h3 className='mt_30'>Questions About this Meetup</h3>
-            <div className='question-flex' />
           </main>
         )}
       </div>
@@ -146,10 +148,11 @@ export class SingleMeetup extends Component {
 
 const mapStateToProps = state => ({
   loading: state.singlemeetup.isLoading,
-  singleMeetup: state.singlemeetup.meetup
+  singleMeetup: state.singlemeetup.meetup,
+  singleQuestion: state.getQuestion.question
 });
 
 export default connect(
   mapStateToProps,
-  { getSingleMeetup, createQuestion }
+  { getSingleMeetup, createQuestion, getQuestion }
 )(SingleMeetup);

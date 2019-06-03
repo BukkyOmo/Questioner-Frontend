@@ -4,13 +4,15 @@ import { meetupReducer } from './meetupReducer';
 import { allMeetupReducer } from './getAllMeetupReducers';
 import { singleMeetupReducer } from './singleMeetupReducers';
 import { createQuestionReducer } from './createQuestionReducer';
+import { getQuestionReducer } from './getQuestionReducers';
 
 const Reducer = combineReducers({
   auth: authReducer,
   meetup: meetupReducer,
   meetups: allMeetupReducer,
   singlemeetup: singleMeetupReducer,
-  createquestion: createQuestionReducer
+  createquestion: createQuestionReducer,
+  getQuestion: getQuestionReducer
 });
 
 export default Reducer;

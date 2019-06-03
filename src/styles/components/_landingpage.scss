@@ -18,6 +18,20 @@ body {
         height: 100vh;
         position: relative;
     }
+    .spinner {
+        height: 50px;
+        width: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+    }
+    .spinner-button {
+        height: 50px;
+        width: 50px;
+    }
     .mt_30 {
         margin-top: 30px;
     }

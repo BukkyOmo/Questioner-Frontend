@@ -23,8 +23,8 @@ export class SignInForm extends Component {
     const { signInUser: signIn } = this.props;
     await signIn(data);
 
-    const { history, status } = this.props;
-    if (status === 200) {
+    const { history, message } = this.props;
+    if (message === 'You have successfully signed in') {
       history.push('/meetups');
     } else {
       history.push('/signin');
@@ -37,6 +37,7 @@ export class SignInForm extends Component {
 
   render() {
     const { email, password } = this.state;
+    const { loading } = this.props;
     return (
       <React.Fragment>
         <main>
@@ -65,9 +66,17 @@ export class SignInForm extends Component {
               />
             </div>
             <div className='items'>
-              <button id='login' className='button' type='submit'>
-                Sign In
-              </button>
+              {!loading ? (
+                <button id='login' className='button' type='submit'>
+                  Sign In
+                </button>
+              ) : (
+                <img
+                  src='https://www.voya.ie/Interface/Icons/LoadingBasketContents.gif'
+                  alt='spinner'
+                  className='spinner-button'
+                />
+              )}
             </div>
             <div className='items-forgot'>
               <p>

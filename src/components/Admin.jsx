@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const image = 'https://res.cloudinary.com/forsetti/image/upload/v1558483538/Questioner/event4.jpg';
