@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import ToastMessage from '../common/ToastMessage';
 import { signUpUser } from '../actions';
@@ -29,36 +29,6 @@ export class SignUpForm extends Component {
     await signUp(data);
 
     const { message, error } = this.props;
-    console.log(this.props);
-
-    if (message === 'You have been successfully registered') {
-      history.push('/signin');
-      toast(<ToastMessage message={`${message}. Redirecting...`} />, {
-        type: 'success',
-        closeButton: false,
-        hideProgressBar: true,
-        onClose: () => window.location.reload(),
-        autoClose: 0
-      });
-    } else if (error === 'user already exists') {
-      let formattedMessage;
-      if (typeof message === 'string') {
-        formattedMessage = message;
-      }
-      toast(<ToastMessage message={formattedMessage} />, {
-        type: 'error',
-        closeButton: false,
-        hideProgressBar: true,
-        autoClose: 1000
-      });
-    } else {
-      toast(<ToastMessage message='Something very strange happened' />, {
-        type: 'error',
-        closeButton: false,
-        hideProgressBar: true,
-        autoClose: 1000
-      });
-    }
   };
 
   handleChange = (e) => {
@@ -67,7 +37,11 @@ export class SignUpForm extends Component {
 
   render() {
     const { email, username, password } = this.state;
-    const { loading } = this.props;
+    const { loading, message, status } = this.props;
+
+    if (status === 201) {
+      return <Redirect to='/signin' />;
+    }
     return (
       <React.Fragment>
         <main>

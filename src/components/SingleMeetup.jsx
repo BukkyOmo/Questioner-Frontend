@@ -16,8 +16,12 @@ export class SingleMeetup extends Component {
   }
 
   componentDidMount() {
-    const { match, getSingleMeetup: fetchSingleMeetup, getQuestion: fetchMeetupQuestions } = this.props;
-    const { id } = match.params;
+    const {
+      computedMatch,
+      getSingleMeetup: fetchSingleMeetup,
+      getQuestion: fetchMeetupQuestions
+    } = this.props;
+    const { id } = computedMatch.params;
     fetchSingleMeetup(id);
     fetchMeetupQuestions(id);
   }
@@ -28,7 +32,11 @@ export class SingleMeetup extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { match: { params: { id } } } = this.props;
+    const {
+      computedMatch: {
+        params: { id }
+      }
+    } = this.props;
     const { title, body } = this.state;
     const data = {
       title,
@@ -40,9 +48,8 @@ export class SingleMeetup extends Component {
   };
 
   render() {
-    const { singleMeetup, loading, singleQuestion: { data } } = this.props;
+    const { singleMeetup, loading, singleQuestion: questions } = this.props;
     const { title, body } = this.state;
-    console.log(this.props);
     return (
       <div>
         {loading ? (
@@ -80,38 +87,6 @@ export class SingleMeetup extends Component {
                 </div>
               </div>
             </div>
-            <h3>Questions About this Meetup</h3>
-            { data && data.map(question => (
-              <div className='question-flex' key={data.id}>
-                <Link to={`/question/${question.id}`} className='question-link'>
-                  {question.body}
-                </Link>
-
-                <h6>posted by Bukola</h6>
-                <hr />
-
-                <div className='icons'>
-                  <div>
-                    <button className='btn-bg' type='button'>
-                      <i className='fas fa-caret-up fa-2x bg-blue' />
-                    </button>
-                    <span className='upvote-amount'>15</span>
-                  </div>
-                  <div>
-                    <button className='btn-bg' type='button'>
-                      <i className='fas fa-caret-down fa-2x bg-red' />
-                    </button>
-                    <span className='downvote-amount'>10</span>
-                  </div>
-                  <div>
-                    <button className='btn-bg' type='button'>
-                      <i className='fas fa-comment fa-2x' />
-                    </button>
-                    <span className='comment-amount'>5</span>
-                  </div>
-                </div>
-              </div>
-            ))}
             <h3>Ask Questions</h3>
             <h4 htmlFor='question-title'>Enter question title</h4>
             <input
@@ -139,6 +114,41 @@ export class SingleMeetup extends Component {
             >
               Post
             </button>
+            <h3>Questions About this Meetup</h3>
+            {questions
+              && questions.map(question => (
+                <div className='question-flex' key={question.id}>
+                  <h6>{question.title}</h6>
+                  <Link
+                    to={`/question/${question.id}`}
+                    className='question-link'
+                  >
+                    {question.body}
+                  </Link>
+                  <hr />
+
+                  <div className='icons'>
+                    <div>
+                      <button className='btn-bg' type='button'>
+                        <i className='fas fa-caret-up fa-2x bg-blue' />
+                      </button>
+                      <span className='upvote-amount'>15</span>
+                    </div>
+                    <div>
+                      <button className='btn-bg' type='button'>
+                        <i className='fas fa-caret-down fa-2x bg-red' />
+                      </button>
+                      <span className='downvote-amount'>10</span>
+                    </div>
+                    <div>
+                      <button className='btn-bg' type='button'>
+                        <i className='fas fa-comment fa-2x' />
+                      </button>
+                      <span className='comment-amount'>5</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
           </main>
         )}
       </div>
@@ -149,7 +159,7 @@ export class SingleMeetup extends Component {
 const mapStateToProps = state => ({
   loading: state.singlemeetup.isLoading,
   singleMeetup: state.singlemeetup.meetup,
-  singleQuestion: state.getQuestion.question
+  singleQuestion: state.questionStore.questions
 });
 
 export default connect(

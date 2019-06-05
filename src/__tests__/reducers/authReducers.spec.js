@@ -55,23 +55,21 @@ describe('Signin Auth reducers', () => {
     expect(reducerState.submit).toEqual(false);
   })
 
-  it('should recieve success payload on successful signup', () => {
+  it('should recieve success payload on successful signin', () => {
     const payload = {
       redirect: true,
-      token: 'ghfyuj5768',
       status: 200,
       message: 'User signed in successfully',
       isLoggedIn: true
     }
     const reducerState = authReducer(null, { type: SIGNIN_SUCCESS, payload })
     expect(reducerState.redirect).toEqual(true);
-    expect(reducerState.token).toEqual('ghfyuj5768');
     expect(reducerState.status).toEqual(200);
     expect(reducerState.message).toEqual('User signed in successfully');
     expect(reducerState.isLoggedIn).toEqual(true);
   })
 
-  it('should recieve success payload on successful signin', () => {
+  it('should recieve failure payload on unsuccessful signin', () => {
     const payload = {
       redirect: false,
       status: 409,
@@ -89,5 +87,3 @@ describe('Signin Auth reducers', () => {
     );
   });
 });
-
-

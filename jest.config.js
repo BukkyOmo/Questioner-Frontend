@@ -22,6 +22,6 @@ module.exports = {
       moduleNameMapper: {
         '^.+\\.(jpg|png|svg)$': 'babel-jest'
   },
-      modulePathIgnorePatterns: [ 'src/store.js', 'src/App.js', 'index.js', 'src/reducers/index.js', '/mocks', '/utils', 'AuthorizationHOC.jsx']
+      modulePathIgnorePatterns: [ 'src/store.js', 'src/App.js', 'index.js', 'src/reducers/index.js', '/mocks', '/utils', 'AuthorizationHOC.jsx', 'action-types/createMeetupActionType.js', 'actions/authActions.js', 'actions/getAQuestionAction.js', 'components/SingleMeetup.jsx']
 
   };
