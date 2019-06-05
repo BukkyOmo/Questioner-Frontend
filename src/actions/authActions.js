@@ -1,3 +1,5 @@
+// import Decode from '../utils/authorize';
+import jwtDecode from 'jwt-decode';
 import {
   SIGNUP_PENDING,
   SIGNUP_SUCCESS,
@@ -35,13 +37,9 @@ const signinPending = () => ({
   type: SIGNIN_PENDING
 });
 
-const signinSuccess = ({ token, message, status }) => ({
+const signinSuccess = payload => ({
   type: SIGNIN_SUCCESS,
-  payload: {
-    token,
-    message,
-    status
-  }
+  payload
 });
 
 const signinFailure = ({ error, status }) => ({
@@ -60,7 +58,19 @@ const signUpUser = userObject => async (dispatch) => {
     const { status } = response;
     const { message } = response.data;
     const { token } = response.data.data[0];
-    dispatch(signupSuccess({ token, status, message }));
+    const { user } = response.data.data[0];
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    const decoded = jwtDecode(token);
+    const { isAdmin } = decoded;
+    dispatch(
+      signupSuccess({
+        token,
+        status,
+        message,
+        isAdmin
+      })
+    );
   } catch (err) {
     const { status } = err.response;
     const { error } = err.response.data;
@@ -68,15 +78,17 @@ const signUpUser = userObject => async (dispatch) => {
   }
 };
 
-const signInUser = (user, config) => async (dispatch) => {
+const signInUser = (userObject, config) => async (dispatch) => {
   try {
     dispatch(signinPending());
-    const response = await axios.post('/auth/signin', user, config);
+    const response = await axios.post('/auth/signin', userObject, config);
     const { token } = response.data.data[0];
-    const { status } = response.data;
-    const { message } = response.data;
-    dispatch(signinSuccess({ token, status, message }));
+    const { user } = response.data.data[0];
     localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    const decoded = jwtDecode(token);
+    const { isAdmin } = decoded;
+    dispatch(signinSuccess({ isAdmin, user }));
   } catch (err) {
     const { status } = err.response.data;
     const { error } = err.response.data;

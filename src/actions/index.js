@@ -44,6 +44,11 @@ import {
   getQuestion
 } from './getQuestionActions';
 
+import {
+  getAQuestionSuccess,
+  getAQuestion
+} from './getAQuestionAction';
+
 export {
   signupPending,
   signupSuccess,
@@ -69,6 +74,8 @@ export {
   createQuestionSuccess,
   createQuestionFailure,
   createQuestion,
+  getAQuestionSuccess,
+  getAQuestion,
   getQuestionPending,
   getQuestionSuccess,
   getQuestionFailure,

@@ -12,7 +12,7 @@ const initialState = {
   isLoggedIn: false,
   status: '',
   message: '',
-  token: '',
+  isAdmin: false,
   error: '',
   email: '',
   username: '',
@@ -36,7 +36,7 @@ const authReducer = (state = initialState, { type, payload }) => {
         status: payload.status,
         message: payload.message,
         isLoading: false,
-        token: payload.token,
+        isAdmin: payload.isAdmin,
         submit: false,
         redirect: true
       };
@@ -61,7 +61,7 @@ const authReducer = (state = initialState, { type, payload }) => {
         ...state,
         isLoading: false,
         redirect: true,
-        token: payload.token,
+        isAdmin: payload.isAdmin,
         status: payload.status,
         message: payload.message,
         isLoggedIn: true

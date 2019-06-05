@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signInUser } from '../actions';
 
@@ -22,13 +22,6 @@ export class SignInForm extends Component {
 
     const { signInUser: signIn } = this.props;
     await signIn(data);
-
-    const { history, message } = this.props;
-    if (message === 'You have successfully signed in') {
-      history.push('/meetups');
-    } else {
-      history.push('/signin');
-    }
   };
 
   handleChange = (e) => {
@@ -37,11 +30,19 @@ export class SignInForm extends Component {
 
   render() {
     const { email, password } = this.state;
-    const { loading } = this.props;
+    const { loading, redirect, isAdmin } = this.props;
+
+    if (redirect) {
+      if (isAdmin) {
+        return <Redirect to='/admin' />;
+      }
+      return <Redirect to='/meetups' />;
+    }
+
     return (
       <React.Fragment>
         <main>
-          <form className='flex' onSubmit={this.handleSubmit}>
+          <form className='flex' onSubmit={this.handleSubmit.bind(this)}>
             <div className='items'>
               <h1>Sign In</h1>
             </div>
@@ -51,7 +52,7 @@ export class SignInForm extends Component {
                 name='email'
                 id='email'
                 placeholder='email'
-                onChange={this.handleChange}
+                onChange={this.handleChange.bind(this)}
                 value={email}
               />
             </div>
@@ -61,7 +62,7 @@ export class SignInForm extends Component {
                 name='password'
                 id='password'
                 placeholder='Password'
-                onChange={this.handleChange}
+                onChange={this.handleChange.bind(this)}
                 value={password}
               />
             </div>
@@ -92,9 +93,10 @@ export class SignInForm extends Component {
 
 const mapStateToProps = state => ({
   loading: state.auth.isLoading,
-  token: state.auth.token,
+  isAdmin: state.auth.isAdmin,
   message: state.auth.message,
-  status: state.auth.status
+  status: state.auth.status,
+  redirect: state.auth.redirect
 });
 
 const actionCreators = {

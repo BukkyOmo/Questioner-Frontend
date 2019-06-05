@@ -3,6 +3,7 @@ import meetup from './meetupActionType';
 import getAllMeetups from './getAllmeetupsActionType';
 import singleMeetup from './singleMeetupActionType';
 import createQuestion from './createQuestionActionType';
+import getAQuestion from './getAQuestionActionType';
 import getQuestion from './getQuestionActionType';
 
 const {
@@ -39,6 +40,10 @@ const {
 } = createQuestion;
 
 const {
+  GET_A_QUESTION_SUCCESS
+} = getAQuestion;
+
+const {
   GET_QUESTION_PENDING,
   GET_QUESTION_SUCCESS,
   GET_QUESTION_FAILURE
@@ -63,6 +68,7 @@ export {
   CREATE_QUESTION_PENDING,
   CREATE_QUESTION_SUCCESS,
   CREATE_QUESTION_FAILURE,
+  GET_A_QUESTION_SUCCESS,
   GET_QUESTION_PENDING,
   GET_QUESTION_SUCCESS,
   GET_QUESTION_FAILURE

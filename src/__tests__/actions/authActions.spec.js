@@ -90,38 +90,6 @@ describe('Signin Auth Actions Dispatch', () => {
     moxios.uninstall(axios);
   });
 
-  it('should dispatch signin success when signin is successful', async () => {
-    const store = mockStore({});
-    const success = {
-      response: {
-        status: 201,
-        message: 'User has been successfully logged in',
-        data: [
-          {
-            token: 'asfrgt456'
-          }
-        ]
-      }
-    };
-    moxios.wait(() => {
-      const request = moxios.requests.mostRecent();
-      request.respondWith(success);
-    });
-    await store.dispatch(signInUser());
-    expect(store.getActions()).toEqual([
-      {
-        type: SIGNIN_PENDING
-      },
-      {
-        type: SIGNIN_SUCCESS,
-        payload: {
-          token: success.response.data[0].token,
-          message: success.response.message,
-          status: success.response.status
-        }
-      }
-    ]);
-  });
 
   it('should dispatch signin failure when signin is unsuccessful', async () => {
     const store = mockStore({});
@@ -159,40 +127,6 @@ describe('Signup Auth Actions Dispatch', () => {
   afterEach(() => {
     moxios.uninstall(axios);
   });
-
-  it('should dispatch signup success when signup is successful', async () => {
-    const store = mockStore({});
-    const success = {
-      status: 201,
-      response: {
-        message: 'User has been successfully registered',
-        data: [
-          {
-            token: 'asfrgt456'
-          }
-        ]
-      }
-    };
-    moxios.wait(() => {
-      const request = moxios.requests.mostRecent();
-      request.respondWith(success);
-    });
-    await store.dispatch(signUpUser());
-    expect(store.getActions()).toEqual([
-      {
-        type: SIGNUP_PENDING
-      },
-      {
-        type: SIGNUP_SUCCESS,
-        payload: {
-          token: success.response.data[0].token,
-          message: success.response.message,
-          status: success.status
-        }
-      }
-    ]);
-  });
-
   it('should dispatch signup failure when signup is unsuccessful', async () => {
     const store = mockStore({});
     const failure = {

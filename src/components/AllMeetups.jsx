@@ -33,7 +33,7 @@ export class AllMeetups extends Component {
         <main className='main'>
           {meetups.map(meetup => (
             <div className='flex3' key={meetup.id}>
-              <Link to='single-meetup.html'>
+              <Link to={`/meetups/${meetup.id}`}>
                 <img src={meetup.image || meetup1} alt='eventimage' />
               </Link>
               <div className='flex-item'>

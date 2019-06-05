@@ -19,12 +19,12 @@ const Routes = () => (
       <Header />
       <Switch>
         <Route exact path='/' component={LandingPage} />
-        <AuthorizationHOC exact path='/meetups' component={AllMeetupsComponent} />
-        <Route exact path='/meetups/:id' component={SingleMeetupComponent} />
         <Route path='/signup' component={SignUpFormComponent} />
         <Route path='/signin' component={SignInFormComponent} />
-        <AuthorizationHOC exact path='/admin' component={AdminPage} />
-        <AuthorizationHOC exact path='/admin-create' component={CreateMeetupComponent} />
+        <AuthorizationHOC path='/meetups' exact component={AllMeetupsComponent} />
+        <AuthorizationHOC path='/meetups/:id' component={SingleMeetupComponent} />
+        <AuthorizationHOC path='/admin' component={AdminPage} />
+        <AuthorizationHOC path='/admin-create' component={CreateMeetupComponent} />
         <Route component={ErrorPage} />
       </Switch>
       <Footer />
