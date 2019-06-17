@@ -1,10 +1,10 @@
 import auth from './authActionType';
 import meetup from './meetupActionType';
 import getAllMeetups from './getAllmeetupsActionType';
-import singleMeetup from './singleMeetupActionType';
+import singleMeetup from './getSingleMeetupActionType';
 import createQuestion from './createQuestionActionType';
-import getAQuestion from './getAQuestionActionType';
-import getQuestion from './getQuestionActionType';
+import singleQuestion from './getSingleQuestionActionType';
+import getQuestions from './getQuestionActionType';
 
 const {
   SIGNUP_PENDING,
@@ -40,14 +40,16 @@ const {
 } = createQuestion;
 
 const {
-  GET_A_QUESTION_SUCCESS
-} = getAQuestion;
+  GET_A_QUESTION_PENDING,
+  GET_A_QUESTION_SUCCESS,
+  GET_A_QUESTION_FAILURE
+} = singleQuestion;
 
 const {
-  GET_QUESTION_PENDING,
-  GET_QUESTION_SUCCESS,
-  GET_QUESTION_FAILURE
-} = getQuestion;
+  GET_QUESTIONS_PENDING,
+  GET_QUESTIONS_SUCCESS,
+  GET_QUESTIONS_FAILURE
+} = getQuestions;
 
 export {
   SIGNUP_PENDING,
@@ -68,8 +70,10 @@ export {
   CREATE_QUESTION_PENDING,
   CREATE_QUESTION_SUCCESS,
   CREATE_QUESTION_FAILURE,
+  GET_QUESTIONS_PENDING,
+  GET_QUESTIONS_SUCCESS,
+  GET_QUESTIONS_FAILURE,
+  GET_A_QUESTION_PENDING,
   GET_A_QUESTION_SUCCESS,
-  GET_QUESTION_PENDING,
-  GET_QUESTION_SUCCESS,
-  GET_QUESTION_FAILURE
+  GET_A_QUESTION_FAILURE
 };

@@ -26,9 +26,9 @@ const getSingleMeetup = (id, config) => async (dispatch) => {
   try {
     dispatch(getSingleMeetupPending());
     const response = await axios.get(`/meetups/${id}`, config);
-    dispatch(getSingleMeetupSuccess(response.data.data[0]));
+    return dispatch(getSingleMeetupSuccess(response.data.data[0]));
   } catch (err) {
-    dispatch(getSingleMeetupFailure(err.response.data));
+    return dispatch(getSingleMeetupFailure(err.response.data));
   }
 };
 

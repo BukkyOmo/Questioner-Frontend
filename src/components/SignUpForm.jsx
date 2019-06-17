@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import ToastMessage from '../common/ToastMessage';
 import { signUpUser } from '../actions';
 
 export class SignUpForm extends Component {
@@ -25,10 +23,13 @@ export class SignUpForm extends Component {
       password
     };
 
-    const { signUpUser: signUp, history } = this.props;
+    const { signUpUser: signUp } = this.props;
     await signUp(data);
-
-    const { message, error } = this.props;
+    this.setState({
+      email: '',
+      username: '',
+      password: ''
+    });
   };
 
   handleChange = (e) => {
@@ -37,7 +38,7 @@ export class SignUpForm extends Component {
 
   render() {
     const { email, username, password } = this.state;
-    const { loading, message, status } = this.props;
+    const { loading, status } = this.props;
 
     if (status === 201) {
       return <Redirect to='/signin' />;

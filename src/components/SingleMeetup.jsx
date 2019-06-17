@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getSingleMeetup } from '../actions/singleMeetupActions';
+import { getSingleMeetup } from '../actions/getSingleMeetupActions';
 import { createQuestion } from '../actions/createQuestionActions';
-import { getQuestion } from '../actions/getQuestionActions';
+import { getQuestions } from '../actions/getQuestionActions';
 import image1 from '../assets/images/event1.jpg';
 
 export class SingleMeetup extends Component {
@@ -19,7 +19,7 @@ export class SingleMeetup extends Component {
     const {
       computedMatch,
       getSingleMeetup: fetchSingleMeetup,
-      getQuestion: fetchMeetupQuestions
+      getQuestions: fetchMeetupQuestions
     } = this.props;
     const { id } = computedMatch.params;
     fetchSingleMeetup(id);
@@ -45,10 +45,14 @@ export class SingleMeetup extends Component {
     };
     const { createQuestion: question } = this.props;
     question(data);
+    this.setState({
+      title: '',
+      body: ''
+    });
   };
 
   render() {
-    const { singleMeetup, loading, singleQuestion: questions } = this.props;
+    const { singleMeetup, loading, Questions: questions } = this.props;
     const { title, body } = this.state;
     return (
       <div>
@@ -70,9 +74,9 @@ export class SingleMeetup extends Component {
               </div>
 
               <div className='meetup-details'>
-                <h3>{singleMeetup.topic}</h3>
+                <h3>Topic: {singleMeetup.topic}</h3>
 
-                <h4>{singleMeetup.location}</h4>
+                <h4>Location: {singleMeetup.location}</h4>
 
                 <h5>
                   Date: {new Date(singleMeetup.happeningon).toDateString()}
@@ -118,13 +122,17 @@ export class SingleMeetup extends Component {
             {questions
               && questions.map(question => (
                 <div className='question-flex' key={question.id}>
-                  <h6>{question.title}</h6>
-                  <Link
-                    to={`/question/${question.id}`}
-                    className='question-link'
-                  >
-                    {question.body}
-                  </Link>
+                  <h5>Title: {question.title}</h5>
+                  <p>
+                    Question:{' '}
+                    <Link
+                      to={`/questions/${question.id}`}
+                      className='question-link'
+                    >
+                      {question.body}
+                    </Link>
+                  </p>
+
                   <hr />
 
                   <div className='icons'>
@@ -159,10 +167,10 @@ export class SingleMeetup extends Component {
 const mapStateToProps = state => ({
   loading: state.singlemeetup.isLoading,
   singleMeetup: state.singlemeetup.meetup,
-  singleQuestion: state.questionStore.questions
+  Questions: state.questionStore.questions
 });
 
 export default connect(
   mapStateToProps,
-  { getSingleMeetup, createQuestion, getQuestion }
+  { getSingleMeetup, createQuestion, getQuestions }
 )(SingleMeetup);

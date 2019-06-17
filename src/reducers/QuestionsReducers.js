@@ -1,7 +1,7 @@
 import {
-  GET_QUESTION_PENDING,
-  GET_QUESTION_SUCCESS,
-  GET_QUESTION_FAILURE,
+  GET_QUESTIONS_PENDING,
+  GET_QUESTIONS_SUCCESS,
+  GET_QUESTIONS_FAILURE,
   CREATE_QUESTION_SUCCESS,
   CREATE_QUESTION_FAILURE,
   CREATE_QUESTION_PENDING
@@ -16,18 +16,18 @@ const initialState = {
 
 const QuestionsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case GET_QUESTION_PENDING:
+    case GET_QUESTIONS_PENDING:
       return {
         ...state,
         isLoading: true
       };
-    case GET_QUESTION_SUCCESS:
+    case GET_QUESTIONS_SUCCESS:
       return {
         ...state,
         isLoading: false,
         questions: payload.data
       };
-    case GET_QUESTION_FAILURE:
+    case GET_QUESTIONS_FAILURE:
       return {
         ...state,
         isLoading: false,
