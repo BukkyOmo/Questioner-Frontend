@@ -28,7 +28,7 @@ import {
   getSingleMeetupSuccess,
   getSingleMeetupFailure,
   getSingleMeetup
-} from './singleMeetupActions';
+} from './getSingleMeetupActions';
 
 import {
   createQuestionPending,
@@ -38,16 +38,18 @@ import {
 } from './createQuestionActions';
 
 import {
-  getQuestionPending,
-  getQuestionSuccess,
-  getQuestionFailure,
-  getQuestion
+  getQuestionsPending,
+  getQuestionsSuccess,
+  getQuestionsFailure,
+  getQuestions
 } from './getQuestionActions';
 
 import {
-  getAQuestionSuccess,
-  getAQuestion
-} from './getAQuestionAction';
+  getSingleQuestionPending,
+  getSingleQuestionSuccess,
+  getSingleQuestionFailure,
+  getSingleQuestion
+} from './getSingleQuestionActions';
 
 export {
   signupPending,
@@ -74,10 +76,12 @@ export {
   createQuestionSuccess,
   createQuestionFailure,
   createQuestion,
-  getAQuestionSuccess,
-  getAQuestion,
-  getQuestionPending,
-  getQuestionSuccess,
-  getQuestionFailure,
-  getQuestion
+  getSingleQuestionPending,
+  getSingleQuestionSuccess,
+  getSingleQuestionFailure,
+  getSingleQuestion,
+  getQuestionsPending,
+  getQuestionsSuccess,
+  getQuestionsFailure,
+  getQuestions
 };

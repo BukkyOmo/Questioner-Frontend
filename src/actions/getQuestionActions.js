@@ -1,41 +1,41 @@
 import {
-  GET_QUESTION_PENDING,
-  GET_QUESTION_SUCCESS,
-  GET_QUESTION_FAILURE
+  GET_QUESTIONS_PENDING,
+  GET_QUESTIONS_SUCCESS,
+  GET_QUESTIONS_FAILURE
 } from '../action-types';
 
 import axios from '../config/axiosConfig';
 
 // actions
-const getQuestionPending = () => ({
-  type: GET_QUESTION_PENDING
+const getQuestionsPending = () => ({
+  type: GET_QUESTIONS_PENDING
 });
 
-const getQuestionSuccess = payload => ({
-  type: GET_QUESTION_SUCCESS,
+const getQuestionsSuccess = payload => ({
+  type: GET_QUESTIONS_SUCCESS,
   payload
 });
 
-const getQuestionFailure = payload => ({
-  type: GET_QUESTION_FAILURE,
+const getQuestionsFailure = payload => ({
+  type: GET_QUESTIONS_FAILURE,
   payload
 });
 
 // action creator
-const getQuestion = id => async (dispatch) => {
+const getQuestions = id => async (dispatch) => {
   try {
-    dispatch(getQuestionPending());
+    dispatch(getQuestionsPending());
     const response = await axios.get(`/meetups/${id}/questions`);
-    return dispatch(getQuestionSuccess(response.data));
+    return dispatch(getQuestionsSuccess(response.data));
   } catch (err) {
-    dispatch(getQuestionFailure(err.response.data));
+    dispatch(getQuestionsFailure(err.response.data));
     return true;
   }
 };
 
 export {
-  getQuestionPending,
-  getQuestionSuccess,
-  getQuestionFailure,
-  getQuestion
+  getQuestionsPending,
+  getQuestionsSuccess,
+  getQuestionsFailure,
+  getQuestions
 };
