@@ -51,6 +51,13 @@ import {
   getSingleQuestion
 } from './getSingleQuestionActions';
 
+import {
+  createCommentPending,
+  createCommentSuccess,
+  createCommentFailure,
+  createComment
+} from './createCommentActions';
+
 export {
   signupPending,
   signupSuccess,
@@ -83,5 +90,9 @@ export {
   getQuestionsPending,
   getQuestionsSuccess,
   getQuestionsFailure,
-  getQuestions
+  getQuestions,
+  createCommentPending,
+  createCommentSuccess,
+  createCommentFailure,
+  createComment
 };
