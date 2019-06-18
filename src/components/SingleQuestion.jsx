@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ErrorPage from '../utils/ErrorPage';
 import { getSingleQuestion } from '../actions/getSingleQuestionActions';
+import { createComment } from '../actions/createCommentActions';
 
 export class SingleQuestion extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      body: ''
+    };
   }
 
   componentDidMount() {
@@ -18,8 +21,32 @@ export class SingleQuestion extends Component {
     fetchSingleQuestion(id);
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const {
+      computedMatch: {
+        params: { id }
+      }
+    } = this.props;
+    const { body } = this.state;
+    const data = {
+      body,
+      id
+    };
+    const { createComment: comment } = this.props;
+    comment(data);
+    this.setState({
+      body: ''
+    });
+  };
+
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
     const { loading, singleQuestion, error } = this.props;
+    const { body } = this.state;
     if (error) {
       return <ErrorPage />;
     }
@@ -70,14 +97,23 @@ export class SingleQuestion extends Component {
             <h3>Post a comment</h3>
 
             <textarea
-              name='ask_questions'
+              name='body'
               id='ask_questions'
               cols='83'
               rows='4'
               placeholder='Post a comment'
+              onChange={this.handleChange}
+              value={body}
             />
 
-            <input type='submit' value='Post' className='submit' />
+            <button
+              type='submit'
+              value='Post'
+              className='submit'
+              onClick={this.handleSubmit}
+            >
+              Post
+            </button>
 
             <h3 className='mt_30'>Comments</h3>
 
@@ -97,9 +133,10 @@ export class SingleQuestion extends Component {
 const mapStateToProps = state => ({
   loading: state.singleQuestion.isLoading,
   error: state.singleQuestion.error,
-  singleQuestion: state.singleQuestion.question
+  singleQuestion: state.singleQuestion.question,
+  singleComment: state.commentStore
 });
 export default connect(
   mapStateToProps,
-  { getSingleQuestion }
+  { getSingleQuestion, createComment }
 )(SingleQuestion);

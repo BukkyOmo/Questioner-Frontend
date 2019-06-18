@@ -5,6 +5,7 @@ import singleMeetup from './getSingleMeetupActionType';
 import createQuestion from './createQuestionActionType';
 import singleQuestion from './getSingleQuestionActionType';
 import getQuestions from './getQuestionActionType';
+import createComment from './createCommentActionType';
 
 const {
   SIGNUP_PENDING,
@@ -51,6 +52,12 @@ const {
   GET_QUESTIONS_FAILURE
 } = getQuestions;
 
+const {
+  CREATE_COMMENT_PENDING,
+  CREATE_COMMENT_SUCCESS,
+  CREATE_COMMENT_FAILURE
+} = createComment;
+
 export {
   SIGNUP_PENDING,
   SIGNUP_SUCCESS,
@@ -75,5 +82,8 @@ export {
   GET_QUESTIONS_FAILURE,
   GET_A_QUESTION_PENDING,
   GET_A_QUESTION_SUCCESS,
-  GET_A_QUESTION_FAILURE
+  GET_A_QUESTION_FAILURE,
+  CREATE_COMMENT_PENDING,
+  CREATE_COMMENT_SUCCESS,
+  CREATE_COMMENT_FAILURE
 };

@@ -5,6 +5,7 @@ import { allMeetupReducer } from './getAllMeetupReducers';
 import { singleMeetupReducer } from './singleMeetupReducers';
 import { QuestionsReducer } from './QuestionsReducers';
 import { singleQuestionReducer } from './singleQuestionReducer';
+import { commentReducer } from './createCommentReducers';
 
 const Reducer = combineReducers({
   auth: authReducer,
@@ -13,6 +14,7 @@ const Reducer = combineReducers({
   singlemeetup: singleMeetupReducer,
   singleQuestion: singleQuestionReducer,
   questionStore: QuestionsReducer,
+  commentStore: commentReducer
 });
 
 export default Reducer;
