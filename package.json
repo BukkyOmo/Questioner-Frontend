@@ -42,7 +42,7 @@
         "cors": "^2.8.5",
         "cross-env": "^5.2.0",
         "editorconfig": "^0.15.3",
-        "express": "4.16.4",
+        "express": "4.18.2",
         "jest-css-modules-transform": "^2.2.0",
         "jwt-decode": "^2.2.0",
         "prop-types": "^15.7.2",
